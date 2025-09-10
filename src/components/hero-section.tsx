@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Rocket, Play, Palette, Code, Smartphone } from "lucide-react";
@@ -12,6 +13,7 @@ import {
   SiVercel,
 } from "react-icons/si";
 import { useState, useEffect } from "react";
+import styles from "./hero-section.module.css";
 
 export default function HeroSection() {
   const [currentLogoSet, setCurrentLogoSet] = useState(0);
@@ -42,12 +44,21 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 pt-32">
       <div className="max-w-6xl mx-auto text-center">
-        <div className="animate-float mb-8">
-          <div className="inline-flex items-center glass rounded-full px-6 py-2 mb-8">
-            <span className="w-2 h-2 bg-primary rounded-full mr-3 animate-pulse"></span>
-            <span className="text-sm text-muted-foreground">
-              Introducing Mono UI v1.0
-            </span>
+        <div className="mb-8">
+          <div
+            className={`inline-flex items-center rounded-full px-6 py-2 mb-8 `}
+          >
+            <div className="rounded-full inline-flex items-center justify-center duration-1000 delay-1000">
+              <div className="p-0.5 rounded-full relative overflow-hidden bg-muted inline-block">
+                <div className="card-wrapper h-full w-full relative z-[2]">
+                  <div className="relative h-full rounded-full">
+                    <div className="bg-muted rounded-full inline-flex items-center justify-center text-sm px-8 py-2 text-white text-center whitespace-nowrap">
+                      Introducing Mono UI v1.0
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -65,10 +76,10 @@ export default function HeroSection() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
           <Button
-            className="glass-orange rounded-2xl px-8 py-6 font-semibold text-lg hover:scale-105 transition-all animate-glow"
+            className="glassmorphism-button text-white font-semibold text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 rounded-2xl transition-all duration-300 w-full sm:w-auto"
             data-testid="button-start-building"
           >
-            <Rocket className="mr-3" size={20} />
+            <Rocket size={20} />
             Start Building Now
           </Button>
         </div>
