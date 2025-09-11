@@ -36,7 +36,7 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section id="testimonials" className="relative py-24 px-4">
+    <section id="testimonials" className="relative py-20 px-4">
       <div
         ref={ref}
         className={`max-w-6xl mx-auto transition-all duration-1000 ${
@@ -44,10 +44,10 @@ export default function TestimonialsSection() {
         }`}
       >
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Loved by <span className="gradient-text">Developers</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-md text-muted-foreground max-w-2xl mx-auto">
             See what developers around the world are saying about Mono UI
           </p>
         </div>

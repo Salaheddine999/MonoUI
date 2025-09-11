@@ -2,7 +2,7 @@ import { Box, Github, Instagram, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative py-12 px-4 border-t border-border/20">
+    <footer className="relative py-20 px-4 border-t border-border/20">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Left side - Brand and info */}
