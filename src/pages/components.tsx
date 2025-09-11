@@ -10,6 +10,7 @@ import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
 import { LiquidGlassCard } from "@/components/ui/liquid-glass-card";
 import { LiquidGlassInput } from "@/components/ui/liquid-glass-input";
 import { LiquidGlassButtonGroup } from "@/components/ui/liquid-glass-button-group";
+import { LiquidGlassMessage } from "@/components/ui/liquid-glass-message";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -75,6 +76,18 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/liquid-glass-button-group",
+    },
+    {
+      name: "Liquid Glass Message",
+      description: "A notification component with liquid glass styling.",
+      component: (
+        <div className="flex justify-center">
+          <LiquidGlassMessage variant="info" size="sm">
+            <div className="text-xs">Sample message</div>
+          </LiquidGlassMessage>
+        </div>
+      ),
+      route: "/liquid-glass-message",
     },
   ];
 
