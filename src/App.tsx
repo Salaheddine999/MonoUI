@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import Components from "@/pages/components";
 import LiquidGlassButtonPage from "@/pages/liquid-glass-button";
+import LiquidGlassCardPage from "@/pages/liquid-glass-card";
+import LiquidGlassInputPage from "@/pages/liquid-glass-input";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -17,6 +19,9 @@ function Router() {
         path="/components/liquid-glass-button"
         component={LiquidGlassButtonPage}
       />
+      <Route path="/liquid-glass-button" component={LiquidGlassButtonPage} />
+      <Route path="/liquid-glass-card" component={LiquidGlassCardPage} />
+      <Route path="/liquid-glass-input" component={LiquidGlassInputPage} />
       <Route component={NotFound} />
     </Switch>
   );
