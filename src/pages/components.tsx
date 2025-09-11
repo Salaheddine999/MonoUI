@@ -6,7 +6,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 
 // Import UI components for demonstration
-import { Button as ButtonComponent } from "@/components/ui/button";
+import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -17,9 +17,7 @@ export default function ComponentsPage() {
       description: "A premium button component with liquid glass effects.",
       component: (
         <div className="flex justify-center">
-          <ButtonComponent className="bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/30 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:bg-white/20">
-            Click on me
-          </ButtonComponent>
+          <LiquidGlassButton size="md">Click on me</LiquidGlassButton>
         </div>
       ),
     },
@@ -57,7 +55,8 @@ export default function ComponentsPage() {
               {components.map((component, index) => (
                 <Card
                   key={index}
-                  className="glass rounded-2xl border-border/20 hover:border-border/40 group h-full flex flex-col transition-all duration-300 hover:scale-105"
+                  className="glass rounded-2xl border-border/20 hover:border-border/40 group h-full flex flex-col transition-all duration-300 hover:scale-105 cursor-pointer"
+                  onClick={() => setLocation("/components/liquid-glass-button")}
                 >
                   <CardContent className="p-6 flex-1 flex flex-col">
                     {/* Component Preview - Fixed Height */}
