@@ -7,6 +7,8 @@ import Footer from "@/components/footer";
 
 // Import UI components for demonstration
 import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
+import { LiquidGlassCard } from "@/components/ui/liquid-glass-card";
+import { LiquidGlassInput } from "@/components/ui/liquid-glass-input";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -20,6 +22,37 @@ export default function ComponentsPage() {
           <LiquidGlassButton size="md">Click on me</LiquidGlassButton>
         </div>
       ),
+      route: "/liquid-glass-button",
+    },
+    {
+      name: "Liquid Glass Card",
+      description:
+        "An elegant card component with sophisticated glass effects.",
+      component: (
+        <div className="flex justify-center">
+          <LiquidGlassCard size="sm" className="w-48 h-24">
+            <div className="text-center">
+              <h3 className="text-sm font-semibold mb-1">Card Title</h3>
+              <p className="text-xs text-white/80">Preview content</p>
+            </div>
+          </LiquidGlassCard>
+        </div>
+      ),
+      route: "/liquid-glass-card",
+    },
+    {
+      name: "Liquid Glass Input",
+      description: "A beautiful input component with liquid glass styling.",
+      component: (
+        <div className="flex justify-center">
+          <LiquidGlassInput
+            size="sm"
+            placeholder="Enter text..."
+            className="w-48"
+          />
+        </div>
+      ),
+      route: "/liquid-glass-input",
     },
   ];
 
@@ -56,7 +89,7 @@ export default function ComponentsPage() {
                 <Card
                   key={index}
                   className="glass rounded-2xl border-border/20 hover:border-border/40 group h-full flex flex-col transition-all duration-300 hover:scale-105 cursor-pointer"
-                  onClick={() => setLocation("/components/liquid-glass-button")}
+                  onClick={() => setLocation(component.route)}
                 >
                   <CardContent className="p-6 flex-1 flex flex-col">
                     {/* Component Preview - Fixed Height */}

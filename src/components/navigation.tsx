@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Box, Github } from "lucide-react";
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 
 export default function Navigation() {
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -34,10 +34,12 @@ export default function Navigation() {
       <div className="glass rounded-2xl px-6 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <Box className="text-white text-sm" size={16} />
-            </div>
-            <span className="text-xl font-bold gradient-text">Mono UI</span>
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                <Box className="text-white text-sm" size={16} />
+              </div>
+              <span className="text-xl font-bold gradient-text">Mono UI</span>
+            </Link>
           </div>
 
           <div className="flex items-center space-x-4">
