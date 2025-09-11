@@ -1,7 +1,15 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Rocket, Play, Palette, Code, Smartphone } from "lucide-react";
+import {
+  Rocket,
+  Play,
+  Palette,
+  Code,
+  Smartphone,
+  Tag,
+  PartyPopper,
+} from "lucide-react";
 import {
   SiHtml5,
   SiReact,
@@ -42,17 +50,16 @@ export default function HeroSection() {
   }, [logoSets.length]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-32">
+    <section className="relative min-h-screen flex items-center justify-center px-4 pt-36 pb-20">
       <div className="max-w-6xl mx-auto text-center">
         <div className="mb-8">
-          <div
-            className={`inline-flex items-center rounded-full px-6 py-2 mb-8 `}
-          >
+          <div className="inline-flex items-center rounded-full px-6 py-2 mb-2">
             <div className="rounded-full inline-flex items-center justify-center duration-1000 delay-1000">
               <div className="p-0.5 rounded-full relative overflow-hidden bg-muted inline-block">
                 <div className="card-wrapper h-full w-full relative z-[2]">
                   <div className="relative h-full rounded-full">
-                    <div className="bg-muted rounded-full inline-flex items-center justify-center text-sm px-8 py-2 text-white text-center whitespace-nowrap">
+                    <div className="bg-muted rounded-full inline-flex items-center justify-center text-sm px-8 py-2 text-white text-center whitespace-nowrap gap-2">
+                      <PartyPopper className="w-4 h-4" />
                       Introducing Mono UI v1.0
                     </div>
                   </div>
@@ -62,13 +69,13 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-relaxed">
           Design Seamless
           <br />
           <span className="gradient-text">Interfaces That Truly Connect</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+        <p className="text-md text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
           Discover how to craft intuitive, beautiful designs that feel
           effortless to use. You’ll gain the skills to create interfaces that
           delight users, build trust, and keep them coming back.
@@ -76,7 +83,7 @@ export default function HeroSection() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
           <Button
-            className="glassmorphism-button text-white font-semibold text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 rounded-2xl transition-all duration-300 w-full sm:w-auto"
+            className="glassmorphism-button text-white font-medium text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 rounded-2xl transition-all duration-300 w-full sm:w-auto"
             data-testid="button-start-building"
           >
             <Rocket size={20} />
@@ -131,9 +138,9 @@ export default function HeroSection() {
               <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-4 mx-auto">
                 <Code className="text-white" size={24} />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Developer Friendly</h3>
+              <h3 className="text-lg font-semibold mb-2">Copy & Paste Ready</h3>
               <p className="text-muted-foreground text-sm">
-                Clean APIs and comprehensive documentation
+                Clean, copy-paste code with comprehensive documentation
               </p>
             </CardContent>
           </Card>

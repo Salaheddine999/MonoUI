@@ -15,7 +15,7 @@ export default function ExperienceSection() {
   const tabs = ["Home", "Profile", "Settings"];
 
   return (
-    <section className="relative py-24 px-4">
+    <section className="relative py-20 px-4">
       <div
         ref={ref}
         className={`max-w-6xl mx-auto transition-all duration-1000 ${
@@ -23,7 +23,7 @@ export default function ExperienceSection() {
         }`}
       >
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
             Create Eye-Catching
             <br />
             <span className="gradient-text">Experiences With Mono UI</span>
