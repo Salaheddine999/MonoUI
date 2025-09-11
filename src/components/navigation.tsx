@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Box, Github } from "lucide-react";
+import { useLocation } from "wouter";
 
 export default function Navigation() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [navVisible, setNavVisible] = useState(true);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
