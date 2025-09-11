@@ -2,9 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, Github, ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useLocation } from "wouter";
 
 export default function CTASection() {
   const { ref, isVisible } = useScrollAnimation();
+  const [, setLocation] = useLocation();
 
   return (
     <section className="relative py-20 px-4">
@@ -26,6 +28,7 @@ export default function CTASection() {
             size="lg"
             className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white rounded-xl px-8 py-6 font-medium text-base border-0 shadow-lg duration-300"
             data-testid="button-try-now"
+            onClick={() => setLocation("/components")}
           >
             <div className="flex items-center gap-2">
               Browse Components

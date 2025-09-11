@@ -10,6 +10,7 @@ import {
   Tag,
   PartyPopper,
 } from "lucide-react";
+import { useLocation } from "wouter";
 import {
   SiHtml5,
   SiReact,
@@ -25,6 +26,7 @@ import styles from "./hero-section.module.css";
 
 export default function HeroSection() {
   const [currentLogoSet, setCurrentLogoSet] = useState(0);
+  const [, setLocation] = useLocation();
 
   const logoSets = [
     [
@@ -85,6 +87,7 @@ export default function HeroSection() {
           <Button
             className="glassmorphism-button text-white font-medium text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 rounded-2xl transition-all duration-300 w-full sm:w-auto"
             data-testid="button-start-building"
+            onClick={() => setLocation("/components")}
           >
             <Rocket size={20} />
             Start Building Now
