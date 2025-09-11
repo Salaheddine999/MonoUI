@@ -9,6 +9,7 @@ import Footer from "@/components/footer";
 import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
 import { LiquidGlassCard } from "@/components/ui/liquid-glass-card";
 import { LiquidGlassInput } from "@/components/ui/liquid-glass-input";
+import { LiquidGlassButtonGroup } from "@/components/ui/liquid-glass-button-group";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -53,6 +54,27 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/liquid-glass-input",
+    },
+    {
+      name: "Liquid Glass Button Group",
+      description:
+        "A container for grouping buttons with liquid glass styling.",
+      component: (
+        <div className="flex justify-center">
+          <LiquidGlassButtonGroup size="sm" orientation="horizontal">
+            <button className="px-3 py-1 text-xs font-medium text-white/70">
+              Btn 1
+            </button>
+            <button className="px-3 py-1 text-xs font-medium text-white/70">
+              Btn 2
+            </button>
+            <button className="px-3 py-1 text-xs font-medium text-white/70">
+              Btn 3
+            </button>
+          </LiquidGlassButtonGroup>
+        </div>
+      ),
+      route: "/liquid-glass-button-group",
     },
   ];
 

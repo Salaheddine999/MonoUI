@@ -8,6 +8,7 @@ import Components from "@/pages/components";
 import LiquidGlassButtonPage from "@/pages/liquid-glass-button";
 import LiquidGlassCardPage from "@/pages/liquid-glass-card";
 import LiquidGlassInputPage from "@/pages/liquid-glass-input";
+import LiquidGlassButtonGroupPage from "@/pages/liquid-glass-button-group";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -22,6 +23,10 @@ function Router() {
       <Route path="/liquid-glass-button" component={LiquidGlassButtonPage} />
       <Route path="/liquid-glass-card" component={LiquidGlassCardPage} />
       <Route path="/liquid-glass-input" component={LiquidGlassInputPage} />
+      <Route
+        path="/liquid-glass-button-group"
+        component={LiquidGlassButtonGroupPage}
+      />
       <Route component={NotFound} />
     </Switch>
   );
