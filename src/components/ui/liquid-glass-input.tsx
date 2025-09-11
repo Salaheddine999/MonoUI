@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 interface LiquidGlassInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   size?: "sm" | "md" | "lg";
-  className?: string;
 }
 
 const LiquidGlassInput = React.forwardRef<
