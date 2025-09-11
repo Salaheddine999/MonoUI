@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import Components from "@/pages/components";
+import LiquidGlassButtonPage from "@/pages/liquid-glass-button";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -12,6 +13,10 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/components" component={Components} />
+      <Route
+        path="/components/liquid-glass-button"
+        component={LiquidGlassButtonPage}
+      />
       <Route component={NotFound} />
     </Switch>
   );
