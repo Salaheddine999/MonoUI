@@ -16,6 +16,7 @@ import LiquidGlassPromptInputPage from "@/pages/liquid-glass-prompt-input";
 import LiquidGlassMessageBubblePage from "@/pages/liquid-glass-message-bubble";
 import LiquidGlassPromptToolbarPage from "@/pages/liquid-glass-prompt-toolbar";
 import LiquidGlassMenuPage from "@/pages/liquid-glass-menu";
+import LiquidGlassVoiceAssistantPage from "@/pages/liquid-glass-voice-assistant";
 
 function Router() {
   return (
@@ -45,6 +46,10 @@ function Router() {
       <Route
         path="/components/liquid-glass-prompt-toolbar"
         component={LiquidGlassPromptToolbarPage}
+      />
+      <Route
+        path="/components/liquid-glass-voice-assistant"
+        component={LiquidGlassVoiceAssistantPage}
       />
       <Route path="/components/liquid-glass-menu" component={LiquidGlassMenuPage} />
       <Route path="/liquid-glass-button" component={LiquidGlassButtonPage} />

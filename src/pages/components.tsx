@@ -17,6 +17,7 @@ import { LiquidGlassMessageBubble } from "@/components/ui/liquid-glass-message-b
 import { LiquidGlassPromptToolbar } from "@/components/ui/liquid-glass-prompt-toolbar";
 import { Sparkles, Plus, Globe, MoreHorizontal, Bot, User, Settings } from "lucide-react";
 import { LiquidGlassMenu } from "@/components/ui/liquid-glass-menu";
+import { LiquidGlassVoiceAssistant } from "@/components/ui/liquid-glass-voice-assistant";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -150,6 +151,28 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/components/liquid-glass-prompt-input",
+    },
+    {
+      name: "Liquid Glass Voice Assistant",
+      description: "A glassy, animated voice assistant with listening pulse and live waveform.",
+      component: (
+        <div className="flex justify-center w-full">
+          <div className="w-full max-w-xs">
+            <LiquidGlassVoiceAssistant
+              size="sm"
+              layout="panel"
+              title="Mono Voice"
+              showHeader
+              showPrompt
+              indicator="bars"
+              statusIdleLabel="Ready"
+              statusListeningLabel="Listening…"
+              promptText='Tap mic or say "Hey Mono" to begin'
+            />
+          </div>
+        </div>
+      ),
+      route: "/components/liquid-glass-voice-assistant",
     },
     {
       name: "Liquid Glass Message Bubble",
