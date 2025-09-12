@@ -40,11 +40,14 @@ export default function CTASection() {
             size="lg"
             className="glass rounded-xl px-8 py-6 font-medium text-base border-border/20 hover:border-primary/50 transition-all duration-300"
             data-testid="button-github"
+            asChild
           >
-            <div className="flex items-center gap-2">
-              <Github className="w-4 h-4" />
-              View on GitHub
-            </div>
+            <a href="https://github.com/Salaheddine999/MonoUI" target="_blank" rel="noreferrer">
+              <div className="flex items-center gap-2">
+                <Github className="w-4 h-4" />
+                View on GitHub
+              </div>
+            </a>
           </Button>
         </div>
       </div>

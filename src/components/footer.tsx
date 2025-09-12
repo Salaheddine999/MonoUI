@@ -25,7 +25,7 @@ export default function Footer() {
           {/* Right side - Social links */}
           <div className="flex items-center space-x-4">
             <a
-              href="https://github.com/your-org/mono-ui"
+              href="https://github.com/Salaheddine999/MonoUI"
               target="_blank"
               rel="noreferrer"
               className="w-10 h-10 glass rounded-xl flex items-center justify-center hover:glass-orange transition-all"

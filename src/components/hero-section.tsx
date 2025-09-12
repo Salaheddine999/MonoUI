@@ -22,7 +22,6 @@ import {
   SiVercel,
 } from "react-icons/si";
 import { useState, useEffect } from "react";
-import styles from "./hero-section.module.css";
 
 export default function HeroSection() {
   const [currentLogoSet, setCurrentLogoSet] = useState(0);
