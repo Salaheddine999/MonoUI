@@ -12,6 +12,8 @@ import { LiquidGlassInput } from "@/components/ui/liquid-glass-input";
 import { LiquidGlassButtonGroup } from "@/components/ui/liquid-glass-button-group";
 import { LiquidGlassMessage } from "@/components/ui/liquid-glass-message";
 import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
+import { LiquidGlassPromptInput } from "@/components/ui/liquid-glass-prompt-input";
+import { Sparkles, Plus, Globe, MoreHorizontal } from "lucide-react";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -102,6 +104,34 @@ export default function ComponentsPage() {
     },
   ];
 
+  const promptComponents = [
+    {
+      name: "Liquid Glass Prompt Input",
+      description: "An AI prompt input with glass effects, prefix icon, and send action.",
+      component: (
+        <div className="flex justify-center w-full">
+          <div className="w-full max-w-sm">
+            <LiquidGlassPromptInput
+              size="sm"
+              layout="panel"
+              placeholder="Message ChatGPT"
+              prefixIcon={<Sparkles className="w-4 h-4" />}
+              onSend={() => {}}
+              compact
+              actions={[
+                { label: "", icon: <Plus className="w-4 h-4" />, ariaLabel: "Add" },
+                { label: "Search", icon: <Globe className="w-4 h-4" /> },
+                { label: "", icon: <MoreHorizontal className="w-4 h-4" />, ariaLabel: "More" },
+              ]}
+              className="w-full"
+            />
+          </div>
+        </div>
+      ),
+      route: "/liquid-glass-prompt-input",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Background Effects */}
@@ -155,6 +185,40 @@ export default function ComponentsPage() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            {/* Prompt UI Section */}
+            <div className="mt-20">
+              <h2 className="text-2xl md:text-3xl font-semibold mb-6 leading-tight">
+                Prompt <span className="gradient-text">UI</span>
+              </h2>
+              <p className="text-md text-muted-foreground max-w-2xl mb-8">
+                Components tailored for AI and chat experiences, with glass aesthetics and
+                thoughtful interaction design.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {promptComponents.map((component, index) => (
+                  <Card
+                    key={`prompt-${index}`}
+                    className="glass rounded-2xl border-border/20 hover:border-border/40 group h-full flex flex-col transition-all duration-300 hover:scale-105 cursor-pointer"
+                    onClick={() => setLocation(component.route)}
+                  >
+                    <CardContent className="p-6 flex-1 flex flex-col">
+                      <div className="min-h-[132px] bg-muted/20 rounded-lg border border-border/20 flex items-center justify-center mb-4 px-4">
+                        {component.component}
+                      </div>
+                      <div className="flex-1 flex flex-col justify-end">
+                        <CardTitle className="text-lg mb-2 font-medium tracking-normal">
+                          {component.name}
+                        </CardTitle>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {component.description}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>
