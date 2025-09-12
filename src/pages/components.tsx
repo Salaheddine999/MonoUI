@@ -16,6 +16,7 @@ import { LiquidGlassPromptInput } from "@/components/ui/liquid-glass-prompt-inpu
 import { LiquidGlassMessageBubble } from "@/components/ui/liquid-glass-message-bubble";
 import { LiquidGlassPromptToolbar } from "@/components/ui/liquid-glass-prompt-toolbar";
 import { Sparkles, Plus, Globe, MoreHorizontal, Bot, User, Settings } from "lucide-react";
+import { LiquidGlassMenu } from "@/components/ui/liquid-glass-menu";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -103,6 +104,24 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/liquid-glass-toggle",
+    },
+    {
+      name: "Liquid Glass Menu",
+      description: "A menu for navigation or grouped actions with liquid glass styling.",
+      component: (
+        <div className="flex justify-center">
+          <LiquidGlassMenu
+            items={[
+              { key: "home", label: "Home" },
+              { key: "search", label: "Search" },
+              { key: "profile", label: "Profile" },
+            ]}
+            activeKey={"home"}
+            size="sm"
+          />
+        </div>
+      ),
+      route: "/liquid-glass-menu",
     },
   ];
 
