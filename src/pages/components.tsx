@@ -30,7 +30,7 @@ export default function ComponentsPage() {
           <LiquidGlassButton size="md">Click on me</LiquidGlassButton>
         </div>
       ),
-      route: "/liquid-glass-button",
+      route: "/components/liquid-glass-button",
     },
     {
       name: "Liquid Glass Card",
@@ -46,7 +46,7 @@ export default function ComponentsPage() {
           </LiquidGlassCard>
         </div>
       ),
-      route: "/liquid-glass-card",
+      route: "/components/liquid-glass-card",
     },
     {
       name: "Liquid Glass Input",
@@ -60,7 +60,7 @@ export default function ComponentsPage() {
           />
         </div>
       ),
-      route: "/liquid-glass-input",
+      route: "/components/liquid-glass-input",
     },
     {
       name: "Liquid Glass Button Group",
@@ -81,7 +81,7 @@ export default function ComponentsPage() {
           </LiquidGlassButtonGroup>
         </div>
       ),
-      route: "/liquid-glass-button-group",
+      route: "/components/liquid-glass-button-group",
     },
     {
       name: "Liquid Glass Message",
@@ -93,7 +93,7 @@ export default function ComponentsPage() {
           </LiquidGlassMessage>
         </div>
       ),
-      route: "/liquid-glass-message",
+      route: "/components/liquid-glass-message",
     },
     {
       name: "Liquid Glass Toggle",
@@ -103,7 +103,7 @@ export default function ComponentsPage() {
           <LiquidGlassToggle size="sm" />
         </div>
       ),
-      route: "/liquid-glass-toggle",
+      route: "/components/liquid-glass-toggle",
     },
     {
       name: "Liquid Glass Menu",
@@ -121,7 +121,7 @@ export default function ComponentsPage() {
           />
         </div>
       ),
-      route: "/liquid-glass-menu",
+      route: "/components/liquid-glass-menu",
     },
   ];
 
@@ -149,7 +149,7 @@ export default function ComponentsPage() {
           </div>
         </div>
       ),
-      route: "/liquid-glass-prompt-input",
+      route: "/components/liquid-glass-prompt-input",
     },
     {
       name: "Liquid Glass Message Bubble",
@@ -168,7 +168,7 @@ export default function ComponentsPage() {
           </div>
         </div>
       ),
-      route: "/liquid-glass-message-bubble",
+      route: "/components/liquid-glass-message-bubble",
     },
     {
       name: "Liquid Glass Prompt Toolbar",
@@ -183,7 +183,7 @@ export default function ComponentsPage() {
           </div>
         </div>
       ),
-      route: "/liquid-glass-prompt-toolbar",
+      route: "/components/liquid-glass-prompt-toolbar",
     },
   ];
 

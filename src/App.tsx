@@ -26,6 +26,27 @@ function Router() {
         path="/components/liquid-glass-button"
         component={LiquidGlassButtonPage}
       />
+      <Route path="/components/liquid-glass-card" component={LiquidGlassCardPage} />
+      <Route path="/components/liquid-glass-input" component={LiquidGlassInputPage} />
+      <Route
+        path="/components/liquid-glass-button-group"
+        component={LiquidGlassButtonGroupPage}
+      />
+      <Route path="/components/liquid-glass-message" component={LiquidGlassMessagePage} />
+      <Route path="/components/liquid-glass-toggle" component={LiquidGlassTogglePage} />
+      <Route
+        path="/components/liquid-glass-prompt-input"
+        component={LiquidGlassPromptInputPage}
+      />
+      <Route
+        path="/components/liquid-glass-message-bubble"
+        component={LiquidGlassMessageBubblePage}
+      />
+      <Route
+        path="/components/liquid-glass-prompt-toolbar"
+        component={LiquidGlassPromptToolbarPage}
+      />
+      <Route path="/components/liquid-glass-menu" component={LiquidGlassMenuPage} />
       <Route path="/liquid-glass-button" component={LiquidGlassButtonPage} />
       <Route path="/liquid-glass-card" component={LiquidGlassCardPage} />
       <Route path="/liquid-glass-input" component={LiquidGlassInputPage} />
