@@ -14,7 +14,8 @@ import { LiquidGlassMessage } from "@/components/ui/liquid-glass-message";
 import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
 import { LiquidGlassPromptInput } from "@/components/ui/liquid-glass-prompt-input";
 import { LiquidGlassMessageBubble } from "@/components/ui/liquid-glass-message-bubble";
-import { Sparkles, Plus, Globe, MoreHorizontal, Bot, User } from "lucide-react";
+import { LiquidGlassPromptToolbar } from "@/components/ui/liquid-glass-prompt-toolbar";
+import { Sparkles, Plus, Globe, MoreHorizontal, Bot, User, Settings } from "lucide-react";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -150,6 +151,21 @@ export default function ComponentsPage() {
       ),
       route: "/liquid-glass-message-bubble",
     },
+    {
+      name: "Liquid Glass Prompt Toolbar",
+      description: "Configuration toolbar with model selector, temperature, and presets.",
+      component: (
+        <div className="flex justify-center w-full">
+          <div className="w-full max-w-lg">
+            <LiquidGlassPromptToolbar
+              compact
+              className="w-full"
+            />
+          </div>
+        </div>
+      ),
+      route: "/liquid-glass-prompt-toolbar",
+    },
   ];
 
   return (
@@ -224,8 +240,10 @@ export default function ComponentsPage() {
                     onClick={() => setLocation(component.route)}
                   >
                     <CardContent className="p-6 flex-1 flex flex-col">
-                      <div className="min-h-[132px] bg-muted/20 rounded-lg border border-border/20 flex items-center justify-center mb-4 px-4">
-                        {component.component}
+                      <div className="h-36 bg-muted/20 rounded-lg border border-border/20 flex items-center justify-center mb-4 px-4 overflow-visible relative z-10">
+                        <div className="scale-[0.98] w-full relative z-20">
+                          {component.component}
+                        </div>
                       </div>
                       <div className="flex-1 flex flex-col justify-end">
                         <CardTitle className="text-lg mb-2 font-medium tracking-normal">

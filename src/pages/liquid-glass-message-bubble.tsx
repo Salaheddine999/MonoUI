@@ -249,6 +249,24 @@ export default function ChatExample() {
               </div>
             </div>
 
+            {/* How It Works */}
+            <div className="mb-16">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-2xl font-medium mb-6">How It Works</h2>
+                <p className="text-muted-foreground mb-6">
+                  The `LiquidGlassMessageBubble` renders chat messages with a refined glass look
+                  and contextual alignment. It includes:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-8">
+                  <li>Layered gradients and shadows to simulate translucent glass.</li>
+                  <li>Sender-based alignment: assistant on the left, user on the right.</li>
+                  <li>Chat-style corner rounding with a subtle tail per sender.</li>
+                  <li>Optional avatar slot and timestamp rendering beneath the bubble.</li>
+                  <li>Size variants (`sm`, `md`, `lg`) and a `compact` prop for tight layouts.</li>
+                </ul>
+              </div>
+            </div>
+
             {/* Component Code */}
             <div className="mb-16">
               <div className="max-w-4xl mx-auto">
