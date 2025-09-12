@@ -11,6 +11,7 @@ import LiquidGlassInputPage from "@/pages/liquid-glass-input";
 import LiquidGlassButtonGroupPage from "@/pages/liquid-glass-button-group";
 import LiquidGlassMessagePage from "@/pages/liquid-glass-message";
 import NotFound from "@/pages/not-found";
+import LiquidGlassTogglePage from "@/pages/liquid-glass-toggle";
 
 function Router() {
   return (
@@ -29,6 +30,7 @@ function Router() {
         component={LiquidGlassButtonGroupPage}
       />
       <Route path="/liquid-glass-message" component={LiquidGlassMessagePage} />
+      <Route path="/liquid-glass-toggle" component={LiquidGlassTogglePage} />
       <Route component={NotFound} />
     </Switch>
   );

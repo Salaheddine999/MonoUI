@@ -108,8 +108,16 @@ export { LiquidGlassCard };`;
             {/* Live Usage */}
             <div className="mb-16">
               <h2 className="text-2xl font-medium mb-6">Live Usage</h2>
-              <div className="flex items-center justify-center w-full min-h-[400px]">
-                <LiquidGlassCard size="lg" className="w-full max-w-2xl">
+              <div className="relative overflow-hidden flex items-center justify-center w-full min-h-[400px] rounded-lg border border-border/20">
+                <img
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"
+                  alt="Abstract painting background"
+                  className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
+                  aria-hidden
+                />
+                <div className="absolute inset-0 bg-black/30" aria-hidden />
+                <div className="relative z-10 w-full max-w-2xl">
+                  <LiquidGlassCard size="lg" variant="intense" tint="blue" className="w-full">
                   <div className="text-center mb-8">
                     <div className="flex items-center justify-center gap-3 mb-6">
                       <h3 className="text-3xl font-medium">
@@ -131,7 +139,8 @@ export { LiquidGlassCard };`;
                       </button>
                     </div>
                   </div>
-                </LiquidGlassCard>
+                  </LiquidGlassCard>
+                </div>
               </div>
             </div>
 

@@ -119,8 +119,17 @@ export { LiquidGlassButton };`;
             {/* Live Usage */}
             <div className="mb-16">
               <h2 className="text-2xl font-medium mb-6">Live Usage</h2>
-              <div className="flex items-center justify-center w-full min-h-[200px] bg-muted/20 rounded-lg border border-border/20">
-                <LiquidGlassButton size="lg">Click me</LiquidGlassButton>
+              <div className="relative overflow-hidden flex items-center justify-center w-full min-h-[200px] rounded-lg border border-border/20">
+                <img
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"
+                  alt="Abstract painting background"
+                  className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
+                  aria-hidden
+                />
+                <div className="absolute inset-0 bg-black/30" aria-hidden />
+                <div className="relative z-10">
+                  <LiquidGlassButton size="lg">Click me</LiquidGlassButton>
+                </div>
               </div>
             </div>
 
