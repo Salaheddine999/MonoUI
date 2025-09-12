@@ -69,7 +69,7 @@ const LiquidGlassMenu = React.forwardRef<HTMLDivElement, LiquidGlassMenuProps>(
         {...props}
       >
         {/* Items */}
-        <LayoutGroup>
+        <LayoutGroup id={orientation}>
           {items.map((item) => {
             const isActive = activeKey === item.key;
             return (
@@ -78,7 +78,7 @@ const LiquidGlassMenu = React.forwardRef<HTMLDivElement, LiquidGlassMenuProps>(
                 type="button"
                 disabled={item.disabled}
                 className={cn(
-                  "relative rounded-xl transition-colors duration-300 whitespace-nowrap flex items-center gap-2 overflow-hidden",
+                  "relative rounded-xl transition-colors duration-300 whitespace-nowrap flex items-center gap-2 overflow-hidden mx-0.5",
                   itemPadding[size],
                   isActive ? "text-white" : "text-white/75 hover:text-white",
                   item.disabled && "opacity-50 cursor-not-allowed"
@@ -88,6 +88,7 @@ const LiquidGlassMenu = React.forwardRef<HTMLDivElement, LiquidGlassMenuProps>(
                 {isActive && (
                   <motion.span
                     layoutId="lgm-active-pill"
+                    layout
                     transition={{ type: "spring", stiffness: 180, damping: 26, mass: 0.9 }}
                     className="absolute inset-0 rounded-xl bg-white/16 backdrop-blur-[2.5px] shadow-[inset_0_1px_2px_rgba(255,255,255,0.35),inset_0_-1px_2px_rgba(0,0,0,0.06)] will-change-transform will-change-filter"
                     aria-hidden
