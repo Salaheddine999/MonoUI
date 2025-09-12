@@ -25,6 +25,11 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // Ensure each route starts at the top
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location]);
+
   return (
     <nav
       className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-11/12 max-w-4xl transition-transform duration-300 ${
@@ -38,7 +43,7 @@ export default function Navigation() {
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
                 <Box className="text-white text-sm" size={16} />
               </div>
-              <span className="text-xl font-bold gradient-text">Mono UI</span>
+              <span className="text-xl font-bold gradient-text hidden sm:inline">Mono UI</span>
             </Link>
           </div>
 
