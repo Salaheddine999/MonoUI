@@ -55,7 +55,7 @@ export default function Navigation() {
               asChild
             >
               <a
-                href="https://github.com/your-org/mono-ui"
+                href="https://github.com/Salaheddine999/MonoUI"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -66,8 +66,9 @@ export default function Navigation() {
             <Button
               className="glass-orange rounded-xl px-4 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/20 transition-all"
               data-testid="button-get-started"
+              asChild
             >
-              Get Started
+              <Link href="/components">Get Started</Link>
             </Button>
           </div>
         </div>
