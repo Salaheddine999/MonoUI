@@ -1,23 +1,17 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { LiquidGlassInput } from "@/components/ui/liquid-glass-input";
-import { ArrowLeft, Copy, Check, Mail, Lock, User, Search } from "lucide-react";
+import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
+import { ArrowLeft, Copy, Check } from "lucide-react";
 import { useLocation } from "wouter";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-export default function LiquidGlassInputPage() {
+export default function LiquidGlassTogglePage() {
   const [, setLocation] = useLocation();
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    name: "",
-    search: "",
-  });
+  const [isOn, setIsOn] = useState(false);
 
   const copyToClipboard = async (code: string, id: string) => {
     try {
@@ -29,61 +23,95 @@ export default function LiquidGlassInputPage() {
     }
   };
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-
   const componentCode = `"use client";
 
 import React from "react";
 import { cn } from "@/lib/utils";
 
-interface LiquidGlassInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+interface LiquidGlassToggleProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> {
+  checked?: boolean;
+  defaultChecked?: boolean;
+  onCheckedChange?: (checked: boolean) => void;
   size?: "sm" | "md" | "lg";
-  className?: string;
 }
 
-const LiquidGlassInput = React.forwardRef<HTMLInputElement, LiquidGlassInputProps>(
-  ({ size = "md", className, ...props }, ref) => {
-    const baseClasses =
-      "border align-middle select-none font-sans text-white rounded-2xl backdrop-blur-lg transition-all duration-500 antialiased relative overflow-hidden placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/30";
+const sizes = {
+  sm: { track: "w-10 h-6", thumb: "w-5 h-5", translate: "translate-x-4" },
+  md: { track: "w-12 h-7", thumb: "w-6 h-6", translate: "translate-x-5" },
+  lg: { track: "w-16 h-9", thumb: "w-8 h-8", translate: "translate-x-7" },
+};
 
-    const glassClasses =
-      "bg-gradient-to-br from-white/15 via-white/8 to-white/5 border-white/40 shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-1px_2px_rgba(0,0,0,0.1),0_8px_32px_rgba(0,0,0,0.3),0_2px_8px_rgba(0,0,0,0.2)] focus:from-white/25 focus:via-white/15 focus:to-white/10 focus:shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_-1px_2px_rgba(0,0,0,0.1),0_12px_40px_rgba(0,0,0,0.4),0_4px_12px_rgba(0,0,0,0.3)] focus:scale-[1.02]";
+const LiquidGlassToggle = React.forwardRef<HTMLButtonElement, LiquidGlassToggleProps>(
+  (
+    { checked, defaultChecked, onCheckedChange, size = "md", className, disabled, ...props },
+    ref
+  ) => {
+    const [internal, setInternal] = React.useState<boolean>(defaultChecked ?? false);
+    const isControlled = typeof checked === "boolean";
+    const isOn = isControlled ? !!checked : internal;
 
-    const sizeClasses = {
-      sm: "px-3 py-2 text-sm",
-      md: "px-4 py-3 text-base",
-      lg: "px-6 py-4 text-lg",
+    const toggle = () => {
+      if (disabled) return;
+      const next = !isOn;
+      if (!isControlled) setInternal(next);
+      onCheckedChange?.(next);
     };
 
+    const baseTrack =
+      "relative inline-flex items-center border rounded-full transition-all duration-500 backdrop-blur-lg overflow-hidden align-middle select-none antialiased focus:outline-none focus:ring-2 focus:ring-white/30";
+
+    const glassTrack =
+      "bg-gradient-to-br from-white/15 via-white/8 to-white/5 border-white/40 shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-1px_2px_rgba(0,0,0,0.1),0_8px_32px_rgba(0,0,0,0.3),0_2px_8px_rgba(0,0,0,0.2)] hover:from-white/25 hover:via-white/15 hover:to-white/10 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_-1px_2px_rgba(0,0,0,0.1),0_12px_40px_rgba(0,0,0,0.4),0_4px_12px_rgba(0,0,0,0.3)]";
+
+    const activeGlow = isOn ? "ring-2 ring-white/30 shadow-[0_0_20px_rgba(255,255,255,0.25)]" : "";
+
+    const s = sizes[size];
+
     return (
-      <div className="relative">
-        <input
-          ref={ref}
-          className={cn(baseClasses, glassClasses, sizeClasses[size], className)}
-          {...props}
+      <button
+        ref={ref}
+        role="switch"
+        aria-checked={isOn}
+        aria-disabled={disabled}
+        disabled={disabled}
+        onClick={toggle}
+        className={cn(baseTrack, glassTrack, activeGlow, s.track, className)}
+        {...props}
+      >
+        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/40 via-white/10 to-transparent opacity-60 pointer-events-none" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-bl from-transparent via-white/5 to-white/20 opacity-40 pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-1/2 rounded-t-full bg-gradient-to-b from-white/30 to-transparent opacity-50 pointer-events-none" />
+
+        <span
+          className={cn(
+            "z-10 inline-block rounded-full transform transition-all duration-500 ease-out",
+            "bg-gradient-to-br from-white/70 via-white/60 to-white/50",
+            "shadow-[inset_0_2px_4px_rgba(255,255,255,0.6),0_4px_16px_rgba(0,0,0,0.25)]",
+            s.thumb,
+            isOn ? s.translate : "translate-x-1"
+          )}
         />
-        {/* Unique gradient overlays for glass effect */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/40 via-white/10 to-transparent opacity-60 pointer-events-none" />
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-bl from-transparent via-white/5 to-white/20 opacity-40 pointer-events-none" />
-        <div className="absolute top-0 left-0 right-0 h-1/2 rounded-t-2xl bg-gradient-to-b from-white/30 to-transparent opacity-50 pointer-events-none" />
-      </div>
+
+        {isOn && (
+          <div className="absolute inset-0 rounded-full bg-white/10 blur-sm pointer-events-none" />
+        )}
+      </button>
     );
   }
 );
 
-LiquidGlassInput.displayName = "LiquidGlassInput";
+LiquidGlassToggle.displayName = "LiquidGlassToggle";
 
-export { LiquidGlassInput };`;
+export { LiquidGlassToggle };`;
 
-  const usageCode = `import { LiquidGlassInput } from "@/components/ui/liquid-glass-input";
+  const usageCode = `import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
 
-<LiquidGlassInput 
-  placeholder="Enter your email"
-  type="email"
-/>`;
+export default function Example() {
+  const [enabled, setEnabled] = React.useState(false);
+  return (
+    <LiquidGlassToggle size="md" checked={enabled} onCheckedChange={setEnabled} />
+  );
+}`;
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
@@ -111,14 +139,14 @@ export { LiquidGlassInput };`;
                 Back to Components
               </Button>
               <h1 className="text-3xl md:text-4xl font-semibold mb-6 leading-tight">
-                Liquid Glass <span className="gradient-text">Input</span>
+                Liquid Glass <span className="gradient-text">Toggle</span>
               </h1>
             </div>
 
             {/* Live Usage */}
             <div className="mb-16">
               <h2 className="text-2xl font-medium mb-6">Live Usage</h2>
-              <div className="relative overflow-hidden flex items-center justify-center w-full min-h-[200px] rounded-lg border border-border/20">
+              <div className="relative overflow-hidden w-full min-h-[220px] rounded-lg border border-border/20">
                 <img
                   src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"
                   alt="Abstract painting background"
@@ -126,42 +154,16 @@ export { LiquidGlassInput };`;
                   aria-hidden
                 />
                 <div className="absolute inset-0 bg-black/30" aria-hidden />
-                <div className="relative z-10">
-                  <LiquidGlassInput size="lg" placeholder="Enter your email" />
+                <div className="relative z-10 flex flex-col items-center justify-center gap-6 w-full h-full p-6">
+                  <div className="flex items-center gap-4">
+                    <LiquidGlassToggle size="lg" checked={isOn} onCheckedChange={setIsOn} />
+                    <span className="text-white/80 text-sm">{isOn ? "On" : "Off"}</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <LiquidGlassToggle size="md" defaultChecked />
+                    <LiquidGlassToggle size="sm" />
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            {/* How It Works */}
-            <div className="mb-16">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-medium mb-6">How It Works</h2>
-                <p className="text-muted-foreground mb-6">
-                  The `LiquidGlassInput` component creates an elegant input
-                  field with:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-8">
-                  <li>
-                    Sophisticated gradient backgrounds that create depth and
-                    dimension
-                  </li>
-                  <li>
-                    Multiple shadow layers that simulate realistic glass
-                    reflection
-                  </li>
-                  <li>
-                    Gradient overlays that provide authentic glass highlight
-                    effects
-                  </li>
-                  <li>Smooth focus animations that enhance user interaction</li>
-                  <li>
-                    Backdrop blur that creates the frosted glass appearance
-                  </li>
-                  <li>Focus ring for accessibility and visual feedback</li>
-                  <li>
-                    Flexible sizing options (sm, md, lg) for different use cases
-                  </li>
-                </ul>
               </div>
             </div>
 
@@ -183,16 +185,14 @@ export { LiquidGlassInput };`;
                           <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm"></div>
                         </div>
                         <span className="text-slate-400 text-sm font-medium ml-4">
-                          liquid-glass-input.tsx
+                          liquid-glass-toggle.tsx
                         </span>
                       </div>
                       <Button
                         size="sm"
                         variant="ghost"
                         className="text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors"
-                        onClick={() =>
-                          copyToClipboard(componentCode, "component")
-                        }
+                        onClick={() => copyToClipboard(componentCode, "component")}
                       >
                         {copiedCode === "component" ? (
                           <Check className="w-4 h-4" />
@@ -287,11 +287,9 @@ export { LiquidGlassInput };`;
             <div className="mb-16">
               <div className="max-w-4xl mx-auto">
                 <p className="text-muted-foreground text-lg">
-                  This implementation creates a **premium liquid glass input**
-                  that provides an elegant form field with the same
-                  sophisticated glass effects as the button and card components.
-                  It's perfect for **creating beautiful forms** in modern web
-                  applications with a professional, polished appearance.
+                  The LiquidGlassToggle brings the same premium glass aesthetics to a
+                  switch control with smooth animations, layered gradients, and a
+                  glowing active state.
                 </p>
                 <p className="text-muted-foreground mt-4">Happy Coding 👋</p>
               </div>

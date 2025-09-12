@@ -11,6 +11,7 @@ import { LiquidGlassCard } from "@/components/ui/liquid-glass-card";
 import { LiquidGlassInput } from "@/components/ui/liquid-glass-input";
 import { LiquidGlassButtonGroup } from "@/components/ui/liquid-glass-button-group";
 import { LiquidGlassMessage } from "@/components/ui/liquid-glass-message";
+import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -88,6 +89,16 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/liquid-glass-message",
+    },
+    {
+      name: "Liquid Glass Toggle",
+      description: "A toggle switch with premium liquid glass effects.",
+      component: (
+        <div className="flex justify-center">
+          <LiquidGlassToggle size="sm" />
+        </div>
+      ),
+      route: "/liquid-glass-toggle",
     },
   ];
 
