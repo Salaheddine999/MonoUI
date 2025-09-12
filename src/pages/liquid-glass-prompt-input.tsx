@@ -206,6 +206,24 @@ export default function Example() {
               </div>
             </div>
 
+            {/* How It Works */}
+            <div className="mb-16">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-2xl font-medium mb-6">How It Works</h2>
+                <p className="text-muted-foreground mb-6">
+                  The `LiquidGlassPromptInput` provides a premium prompt field with liquid glass
+                  visuals and prompt-specific affordances. It includes:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-8">
+                  <li>Layered gradients, shadows, and backdrop blur for realistic glass.</li>
+                  <li>Keyboard handling: Enter to send (single-line) and Ctrl+Enter for multiline.</li>
+                  <li>Two layout variants: `inline` (compact) and `panel` (with bottom chips + send).</li>
+                  <li>Prefix icon slot and optional action chips for quick tools (e.g., Search).</li>
+                  <li>Accessible send button with `aria-label` and focus-visible styles.</li>
+                </ul>
+              </div>
+            </div>
+
             {/* Component Code */}
             <div className="mb-16">
               <div className="max-w-4xl mx-auto">

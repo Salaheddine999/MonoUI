@@ -167,6 +167,24 @@ export default function Example() {
               </div>
             </div>
 
+            {/* How It Works */}
+            <div className="mb-16">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-2xl font-medium mb-6">How It Works</h2>
+                <p className="text-muted-foreground mb-6">
+                  The `LiquidGlassToggle` recreates a premium switch using liquid glass effects.
+                  It features:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-8">
+                  <li>Glass track with layered gradients, shadows, and backdrop blur.</li>
+                  <li>Glossy thumb with inner highlight and soft outer shadow.</li>
+                  <li>Smooth transform animations for the thumb and active glow.</li>
+                  <li>Accessible semantics: `role="switch"`, `aria-checked`, keyboard focus ring.</li>
+                  <li>Size variants (`sm`, `md`, `lg`) to fit different layouts.</li>
+                </ul>
+              </div>
+            </div>
+
             {/* Component Code */}
             <div className="mb-16">
               <div className="max-w-4xl mx-auto">
