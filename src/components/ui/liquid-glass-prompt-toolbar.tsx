@@ -24,6 +24,10 @@ export interface LiquidGlassPromptToolbarProps extends React.HTMLAttributes<HTML
    */
   onTemperatureChange?: (temperature: number) => void;
   /**
+   * Slider step granularity for temperature control
+   */
+  temperatureStep?: number;
+  /**
    * Preset tone/style options
    */
   presets?: Array<{
@@ -55,6 +59,7 @@ const LiquidGlassPromptToolbar = React.forwardRef<HTMLDivElement, LiquidGlassPro
     onModelChange,
     temperature = 0.7,
     onTemperatureChange,
+    temperatureStep = 0.1,
     presets = [
       { id: "creative", label: "Creative", icon: <Lightbulb className="w-3 h-3" />, active: false, onClick: () => {} },
       { id: "analytical", label: "Analytical", icon: <Brain className="w-3 h-3" />, active: true, onClick: () => {} },
@@ -152,13 +157,13 @@ const LiquidGlassPromptToolbar = React.forwardRef<HTMLDivElement, LiquidGlassPro
                 type="range"
                 min="0"
                 max="1"
-                step="0.1"
+                step={temperatureStep}
                 value={temperature}
                 onChange={(e) => onTemperatureChange?.(parseFloat(e.target.value))}
                 className={cn(
                   "w-full bg-white/20 rounded-full appearance-none cursor-pointer",
-                  compact ? "h-0.5" : "h-1",
-                  compact ? "slider-thumb:w-2.5 slider-thumb:h-2.5" : "slider-thumb:w-3 slider-thumb:h-3",
+                  compact ? "h-0.5" : "h-1.5",
+                  compact ? "slider-thumb:w-2.5 slider-thumb:h-2.5" : "slider-thumb:w-4 slider-thumb:h-4",
                   "slider-thumb:appearance-none slider-thumb:bg-white slider-thumb:rounded-full slider-thumb:cursor-pointer"
                 )}
                 style={{
