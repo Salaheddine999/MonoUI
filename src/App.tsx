@@ -13,6 +13,7 @@ import LiquidGlassMessagePage from "@/pages/liquid-glass-message";
 import NotFound from "@/pages/not-found";
 import LiquidGlassTogglePage from "@/pages/liquid-glass-toggle";
 import LiquidGlassPromptInputPage from "@/pages/liquid-glass-prompt-input";
+import LiquidGlassMessageBubblePage from "@/pages/liquid-glass-message-bubble";
 
 function Router() {
   return (
@@ -35,6 +36,10 @@ function Router() {
       <Route
         path="/liquid-glass-prompt-input"
         component={LiquidGlassPromptInputPage}
+      />
+      <Route
+        path="/liquid-glass-message-bubble"
+        component={LiquidGlassMessageBubblePage}
       />
       <Route component={NotFound} />
     </Switch>

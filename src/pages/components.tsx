@@ -13,7 +13,8 @@ import { LiquidGlassButtonGroup } from "@/components/ui/liquid-glass-button-grou
 import { LiquidGlassMessage } from "@/components/ui/liquid-glass-message";
 import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
 import { LiquidGlassPromptInput } from "@/components/ui/liquid-glass-prompt-input";
-import { Sparkles, Plus, Globe, MoreHorizontal } from "lucide-react";
+import { LiquidGlassMessageBubble } from "@/components/ui/liquid-glass-message-bubble";
+import { Sparkles, Plus, Globe, MoreHorizontal, Bot, User } from "lucide-react";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -129,6 +130,25 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/liquid-glass-prompt-input",
+    },
+    {
+      name: "Liquid Glass Message Bubble",
+      description: "Chat message bubbles with glass effects for conversations.",
+      component: (
+        <div className="flex justify-center w-full">
+          <div className="w-full max-w-sm space-y-2">
+            <LiquidGlassMessageBubble
+              sender="assistant"
+              size="sm"
+              avatar={<Bot className="w-3 h-3" />}
+              compact
+            >
+              Hello! How can I help?
+            </LiquidGlassMessageBubble>
+          </div>
+        </div>
+      ),
+      route: "/liquid-glass-message-bubble",
     },
   ];
 
