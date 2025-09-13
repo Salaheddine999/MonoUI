@@ -20,6 +20,7 @@ import { LiquidGlassMenu } from "@/components/ui/liquid-glass-menu";
 import { LiquidGlassVoiceAssistant } from "@/components/ui/liquid-glass-voice-assistant";
 import { LiquidGlassThemeToggle } from "@/components/ui/liquid-glass-theme-toggle";
 import { LiquidGlassSocialButtons } from "@/components/ui/liquid-glass-social-buttons";
+import { LiquidGlassCopyEmailButton } from "@/components/ui/liquid-glass-copy-email-button";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -145,6 +146,22 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/components/liquid-glass-social-buttons",
+    },
+    {
+      name: "Liquid Glass Copy Email Button",
+      description: "Button that displays an email and copies it with a delightful animation.",
+      component: (
+        <div className="flex justify-center">
+          {/* Keep full email visible in preview */}
+          <div className="max-w-full">
+            <span className="scale-90 inline-block">
+              {/* Using a representative email */}
+              <LiquidGlassCopyEmailButton email="hello@monoui.dev" size="sm" />
+            </span>
+          </div>
+        </div>
+      ),
+      route: "/components/liquid-glass-copy-email-button",
     },
   ];
 
