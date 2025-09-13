@@ -19,6 +19,7 @@ import { Sparkles, Plus, Globe, MoreHorizontal, Bot, User, Settings } from "luci
 import { LiquidGlassMenu } from "@/components/ui/liquid-glass-menu";
 import { LiquidGlassVoiceAssistant } from "@/components/ui/liquid-glass-voice-assistant";
 import { LiquidGlassThemeToggle } from "@/components/ui/liquid-glass-theme-toggle";
+import { LiquidGlassSocialButtons } from "@/components/ui/liquid-glass-social-buttons";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -134,6 +135,16 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/components/liquid-glass-theme-toggle",
+    },
+    {
+      name: "Liquid Glass Social Buttons",
+      description: "GitHub, Google, and Facebook login buttons with liquid glass styling.",
+      component: (
+        <div className="flex justify-center">
+          <LiquidGlassSocialButtons size="sm" className="scale-90" />
+        </div>
+      ),
+      route: "/components/liquid-glass-social-buttons",
     },
   ];
 
