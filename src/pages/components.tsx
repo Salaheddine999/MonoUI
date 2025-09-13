@@ -157,17 +157,17 @@ export default function ComponentsPage() {
       description: "A glassy, animated voice assistant with listening pulse and live waveform.",
       component: (
         <div className="flex justify-center w-full">
-          <div className="w-full max-w-xs">
+          <div className="w-full max-w-[220px]">
             <LiquidGlassVoiceAssistant
               size="sm"
               layout="panel"
-              title="Mono Voice"
+              title="MonoUI"
               showHeader
-              showPrompt
+              showPrompt={false}
               indicator="bars"
               statusIdleLabel="Ready"
               statusListeningLabel="Listening…"
-              promptText='Tap mic or say "Hey Mono" to begin'
+              compact
             />
           </div>
         </div>
