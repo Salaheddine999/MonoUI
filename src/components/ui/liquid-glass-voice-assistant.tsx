@@ -110,35 +110,19 @@ const LiquidGlassVoiceAssistant = React.forwardRef<
             </div>
           )}
 
-          {/* Mic button with liquid pulse */}
+          {/* Mic button - simplified */}
           <div className="relative flex flex-col items-center mt-0.5">
-            {listening && (
-              <motion.span
-                initial={false}
-                animate={{
-                  scale: [1, pulseScale, 1],
-                  opacity: [0.6, 0.25, 0.6],
-                }}
-                transition={{ duration: 2.1, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 rounded-full bg-primary/40 blur-2xl"
-                aria-hidden
-              />
-            )}
-            {/* Soft ground shadow to lift the mic */}
-            <span
-              aria-hidden
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[68%] h-2 rounded-full bg-black/50 blur-md opacity-30"
-            />
             <button
               type="button"
               className={cn(
-                "group relative inline-flex items-center justify-center rounded-full",
-                // Glass shell
-                "bg-white/10 backdrop-blur-xl backdrop-saturate-150",
-                // Depth and inner bevel
-                "shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-3px_8px_rgba(0,0,0,0.25)]",
+                "relative inline-flex items-center justify-center rounded-full transition-all duration-200",
+                "bg-white/10 border border-white/20 backdrop-blur-sm",
+                "hover:bg-white/15 hover:border-white/30",
+                "focus:outline-none focus:ring-2 focus:ring-white/30",
                 micSize,
-                listening ? "text-white" : "text-white/80 hover:text-white",
+                listening 
+                  ? "text-white bg-primary/20 border-primary/40" 
+                  : "text-white/80 hover:text-white",
               )}
               onClick={() => onToggleListening?.(!listening)}
               aria-pressed={listening}
@@ -149,30 +133,15 @@ const LiquidGlassVoiceAssistant = React.forwardRef<
               ) : (
                 <Mic className="w-5 h-5" />
               )}
-              {/* Inner shine removed to drop visible border; rely on specular + inner core */}
-              {/* Top specular highlight */}
-              <span className="pointer-events-none absolute inset-px rounded-full bg-gradient-to-b from-white/50 via-white/10 to-transparent opacity-80" />
-              {/* Inner glass core */}
-              <span className="pointer-events-none absolute inset-[8%] rounded-full bg-white/5 backdrop-blur-sm" />
-              {/* Animated listening ring */}
+              
+              {/* Simple pulse effect when listening */}
               {listening && (
-                <motion.span
-                  aria-hidden
-                  className="pointer-events-none absolute -inset-[4px] rounded-full ring-2 ring-primary/40"
-                  initial={{ opacity: 0.35, scale: 0.98 }}
-                  animate={{ opacity: [0.35, 0.15, 0.35], scale: [0.98, 1.04, 0.98] }}
-                  transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                <motion.div
+                  className="absolute inset-0 rounded-full border-2 border-primary/50"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 />
               )}
-              {/* Subtle hover scale */}
-              <motion.span
-                aria-hidden
-                className="absolute inset-0 rounded-full"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              />
-              {/* Focus/hover aura */}
-              <span className="pointer-events-none absolute -inset-1 rounded-full bg-white/0 group-hover:bg-white/5 group-focus-visible:bg-white/10 transition-colors" />
             </button>
 
             {/* Centralized 5-bar voice glyph (smoother, premium look) */}
