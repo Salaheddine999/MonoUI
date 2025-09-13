@@ -18,6 +18,7 @@ import LiquidGlassPromptToolbarPage from "@/pages/liquid-glass-prompt-toolbar";
 import LiquidGlassMenuPage from "@/pages/liquid-glass-menu";
 import LiquidGlassVoiceAssistantPage from "@/pages/liquid-glass-voice-assistant";
 import LiquidGlassThemeTogglePage from "@/pages/liquid-glass-theme-toggle";
+import LiquidGlassSocialButtonsPage from "@/pages/liquid-glass-social-buttons";
 
 function Router() {
   return (
@@ -39,6 +40,10 @@ function Router() {
       <Route
         path="/components/liquid-glass-theme-toggle"
         component={LiquidGlassThemeTogglePage}
+      />
+      <Route
+        path="/components/liquid-glass-social-buttons"
+        component={LiquidGlassSocialButtonsPage}
       />
       <Route
         path="/components/liquid-glass-prompt-input"
@@ -69,6 +74,10 @@ function Router() {
       <Route
         path="/liquid-glass-theme-toggle"
         component={LiquidGlassThemeTogglePage}
+      />
+      <Route
+        path="/liquid-glass-social-buttons"
+        component={LiquidGlassSocialButtonsPage}
       />
       <Route
         path="/liquid-glass-prompt-input"
