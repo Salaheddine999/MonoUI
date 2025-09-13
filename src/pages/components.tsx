@@ -18,6 +18,7 @@ import { LiquidGlassPromptToolbar } from "@/components/ui/liquid-glass-prompt-to
 import { Sparkles, Plus, Globe, MoreHorizontal, Bot, User, Settings } from "lucide-react";
 import { LiquidGlassMenu } from "@/components/ui/liquid-glass-menu";
 import { LiquidGlassVoiceAssistant } from "@/components/ui/liquid-glass-voice-assistant";
+import { LiquidGlassThemeToggle } from "@/components/ui/liquid-glass-theme-toggle";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -123,6 +124,16 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/components/liquid-glass-menu",
+    },
+    {
+      name: "Liquid Glass Theme Toggle",
+      description: "A theme switcher that toggles Tailwind dark mode with liquid glass styling.",
+      component: (
+        <div className="flex justify-center">
+          <LiquidGlassThemeToggle size="sm" />
+        </div>
+      ),
+      route: "/components/liquid-glass-theme-toggle",
     },
   ];
 
