@@ -44,7 +44,7 @@ const glassInput =
   "relative w-full bg-white/10 border border-white/30 text-white placeholder-white/60 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/40 focus:border-white/50 transition-all duration-300";
 
 const glassButton =
-  "relative inline-flex items-center justify-center border align-middle select-none font-sans font-medium text-center text-white backdrop-blur-lg transition-all duration-500 antialiased overflow-hidden bg-gradient-to-br from-white/20 via-white/10 to-white/5 border-white/50 shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_-1px_2px_rgba(0,0,0,0.1),0_4px_16px_rgba(0,0,0,0.2)] hover:from-white/30 hover:via-white/20 hover:to-white/10 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.6),inset_0_-1px_2px_rgba(0,0,0,0.1),0_6px_20px_rgba(0,0,0,0.3)] focus:outline-none focus:ring-2 focus:ring-white/40 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed";
+  "relative inline-flex items-center justify-center border align-middle select-none font-sans font-medium text-center text-white backdrop-blur-lg backdrop-saturate-150 backdrop-contrast-125 transition-all duration-500 antialiased overflow-hidden\n   bg-gradient-to-br from-white/25 via-white/12 to-white/6 border-white/55\n   shadow-[inset_0_2px_6px_rgba(255,255,255,0.55),inset_0_-2px_4px_rgba(0,0,0,0.12),0_6px_20px_rgba(0,0,0,0.25),0_2px_8px_rgba(0,0,0,0.18)]\n   hover:from-white/35 hover:via-white/18 hover:to-white/10\n   hover:shadow-[inset_0_3px_6px_rgba(255,255,255,0.65),inset_0_-2px_4px_rgba(0,0,0,0.12),0_10px_28px_rgba(0,0,0,0.35),0_4px_12px_rgba(0,0,0,0.25)]\n   focus:outline-none focus:ring-2 focus:ring-white/45 hover:scale-[1.02] active:scale-[0.985] disabled:opacity-50 disabled:cursor-not-allowed";
 
 export const LiquidGlassWaitlistForm = React.forwardRef<HTMLDivElement, LiquidGlassWaitlistFormProps>(
   ({ 
@@ -200,9 +200,30 @@ export const LiquidGlassWaitlistForm = React.forwardRef<HTMLDivElement, LiquidGl
                 <motion.button
                   type="submit"
                   disabled={!email.trim() || isSubmitting}
-                  className={cn(glassButton, s.button, s.gap)}
+                  className={cn(glassButton, s.button, s.gap, "group")}
                   whileTap={{ scale: 0.98 }}
                 >
+                  {/* Button-specific overlays */}
+                  <span className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-t from-white/10 via-transparent to-transparent opacity-80" />
+                  <span className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-white/20" />
+                  {/* Dynamic caustics blob */}
+                  <motion.span
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-6 rounded-[inherit] blur-xl opacity-20"
+                    style={{
+                      background:
+                        "radial-gradient(60%_40%_at_50%_50%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 35%, rgba(255,255,255,0) 70%)",
+                    }}
+                    animate={{ x: [-10, 10, -10], y: [-6, 6, -6] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  {/* Continuous glare sweep (stronger on hover) */}
+                  <motion.span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 rounded-[inherit] opacity-0 group-hover:opacity-70"
+                    animate={{ x: ["-140%", "140%"] }}
+                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                  />
                   <AnimatePresence mode="wait">
                     {isSubmitting ? (
                       <motion.span
@@ -224,7 +245,7 @@ export const LiquidGlassWaitlistForm = React.forwardRef<HTMLDivElement, LiquidGl
                         className="flex items-center"
                       >
                         {buttonText}
-                        <ArrowRight className={cn(s.icon, "ml-2")} />
+                        <ArrowRight className={cn(s.icon, "ml-2 transition-transform duration-300 ease-out group-hover:translate-x-1 drop-shadow-[0_0_6px_rgba(255,255,255,0.35)]")} />
                       </motion.span>
                     )}
                   </AnimatePresence>
