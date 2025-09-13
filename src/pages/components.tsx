@@ -21,6 +21,7 @@ import { LiquidGlassVoiceAssistant } from "@/components/ui/liquid-glass-voice-as
 import { LiquidGlassThemeToggle } from "@/components/ui/liquid-glass-theme-toggle";
 import { LiquidGlassSocialButtons } from "@/components/ui/liquid-glass-social-buttons";
 import { LiquidGlassCopyEmailButton } from "@/components/ui/liquid-glass-copy-email-button";
+import { LiquidGlassWaitlistForm } from "@/components/ui/liquid-glass-waitlist-form";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -162,6 +163,25 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/components/liquid-glass-copy-email-button",
+    },
+    {
+      name: "Liquid Glass Waitlist Form",
+      description: "Email collection form with animated submission states and glass styling.",
+      component: (
+        <div className="flex justify-center">
+          <div className="w-full max-w-xs">
+            <LiquidGlassWaitlistForm 
+              size="sm" 
+              className="scale-90"
+              onSubmit={async (email) => {
+                console.log("Preview submission:", email);
+                await new Promise(resolve => setTimeout(resolve, 500));
+              }}
+            />
+          </div>
+        </div>
+      ),
+      route: "/components/liquid-glass-waitlist-form",
     },
   ];
 
