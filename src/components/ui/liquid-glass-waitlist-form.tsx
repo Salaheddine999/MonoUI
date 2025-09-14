@@ -38,13 +38,13 @@ const sizeClasses = {
 };
 
 const glassContainer =
-  "relative backdrop-blur-lg border overflow-hidden bg-gradient-to-br from-white/15 via-white/8 to-white/5 border-white/40 shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-1px_2px_rgba(0,0,0,0.1),0_8px_32px_rgba(0,0,0,0.3),0_2px_8px_rgba(0,0,0,0.2)]";
+  "relative backdrop-blur-md border overflow-hidden bg-gradient-to-br from-white/15 via-white/8 to-white/5 border-white/40 shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-1px_2px_rgba(0,0,0,0.1),0_8px_32px_rgba(0,0,0,0.3),0_2px_8px_rgba(0,0,0,0.2)]";
 
 const glassInput =
   "relative w-full bg-white/10 border border-white/30 text-white placeholder-white/60 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/40 focus:border-white/50 transition-all duration-300";
 
 const glassButton =
-  "relative inline-flex items-center justify-center border align-middle select-none font-sans font-medium text-center text-white backdrop-blur-lg backdrop-saturate-150 backdrop-contrast-125 transition-all duration-500 antialiased overflow-hidden\n   bg-gradient-to-br from-white/25 via-white/12 to-white/6 border-white/55\n   shadow-[inset_0_2px_6px_rgba(255,255,255,0.55),inset_0_-2px_4px_rgba(0,0,0,0.12),0_6px_20px_rgba(0,0,0,0.25),0_2px_8px_rgba(0,0,0,0.18)]\n   hover:from-white/35 hover:via-white/18 hover:to-white/10\n   hover:shadow-[inset_0_3px_6px_rgba(255,255,255,0.65),inset_0_-2px_4px_rgba(0,0,0,0.12),0_10px_28px_rgba(0,0,0,0.35),0_4px_12px_rgba(0,0,0,0.25)]\n   focus:outline-none focus:ring-2 focus:ring-white/45 hover:scale-[1.02] active:scale-[0.985] disabled:opacity-50 disabled:cursor-not-allowed";
+  "relative inline-flex items-center justify-center border align-middle select-none font-sans font-medium text-center text-white backdrop-blur-md backdrop-saturate-150 backdrop-contrast-125 transition-all duration-500 antialiased overflow-hidden\n   bg-gradient-to-br from-white/25 via-white/12 to-white/6 border-white/55\n   shadow-[inset_0_2px_6px_rgba(255,255,255,0.55),inset_0_-2px_4px_rgba(0,0,0,0.12),0_6px_20px_rgba(0,0,0,0.25),0_2px_8px_rgba(0,0,0,0.18)]\n   hover:from-white/35 hover:via-white/18 hover:to-white/10\n   hover:shadow-[inset_0_3px_6px_rgba(255,255,255,0.65),inset_0_-2px_4px_rgba(0,0,0,0.12),0_10px_28px_rgba(0,0,0,0.35),0_4px_12px_rgba(0,0,0,0.25)]\n   focus:outline-none focus:ring-2 focus:ring-white/45 hover:scale-[1.02] active:scale-[0.985] disabled:opacity-50 disabled:cursor-not-allowed";
 
 export const LiquidGlassWaitlistForm = React.forwardRef<HTMLDivElement, LiquidGlassWaitlistFormProps>(
   ({ 

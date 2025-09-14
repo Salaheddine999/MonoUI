@@ -40,7 +40,7 @@ const LiquidGlassMessageBubble = React.forwardRef<HTMLDivElement, LiquidGlassMes
     ...props 
   }, ref) => {
     const baseClasses =
-      "border align-middle select-none font-sans text-white backdrop-blur-xl transition-all duration-500 antialiased relative overflow-hidden";
+      "border align-middle select-none font-sans text-white backdrop-blur-md transition-all duration-500 antialiased relative overflow-hidden";
 
     const glassClasses =
       sender === "user"

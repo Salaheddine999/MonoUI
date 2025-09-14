@@ -50,7 +50,7 @@ const LiquidGlassVoiceAssistant = React.forwardRef<
     ref
   ) => {
     const baseClasses =
-      "relative border rounded-2xl text-white backdrop-blur-xl transition-all duration-500 overflow-hidden";
+      "relative border rounded-2xl text-white backdrop-blur-md transition-all duration-500 overflow-hidden";
 
     const glassClasses =
       "bg-gradient-to-br from-white/15 via-white/8 to-white/5 border-white/40 shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-1px_2px_rgba(0,0,0,0.1),0_10px_40px_rgba(0,0,0,0.35),0_3px_10px_rgba(0,0,0,0.25)]";

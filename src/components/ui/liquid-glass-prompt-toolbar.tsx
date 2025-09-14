@@ -73,7 +73,7 @@ const LiquidGlassPromptToolbar = React.forwardRef<HTMLDivElement, LiquidGlassPro
     const [showModels, setShowModels] = React.useState(false);
 
     const baseClasses =
-      "border align-middle select-none font-sans text-white rounded-2xl backdrop-blur-xl transition-all duration-500 antialiased relative";
+      "border align-middle select-none font-sans text-white rounded-2xl backdrop-blur-md transition-all duration-500 antialiased relative";
 
     const glassClasses =
       "bg-gradient-to-br from-white/10 via-white/5 to-white/3 border-white/30 shadow-[inset_0_1px_2px_rgba(255,255,255,0.3),inset_0_-1px_1px_rgba(0,0,0,0.1),0_4px_16px_rgba(0,0,0,0.2)]";
@@ -115,7 +115,7 @@ const LiquidGlassPromptToolbar = React.forwardRef<HTMLDivElement, LiquidGlassPro
             {/* Dropdown */}
             {showModels && (
               <div className="absolute top-full left-0 mt-2 min-w-48 z-[9999]">
-                <div className="relative overflow-hidden rounded-xl border border-white/50 shadow-[0_10px_40px_rgba(0,0,0,0.5)] bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-[40px] backdrop-saturate-200">
+                <div className="relative overflow-hidden rounded-xl border border-white/50 shadow-[0_10px_40px_rgba(0,0,0,0.5)] bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-[16px] backdrop-saturate-200">
                   {/* Glass overlays */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/15 to-transparent opacity-80 pointer-events-none" />
                   <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-white/10 to-white/30 opacity-60 pointer-events-none" />
