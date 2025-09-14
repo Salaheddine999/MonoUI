@@ -15,6 +15,7 @@ import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
 import { LiquidGlassPromptInput } from "@/components/ui/liquid-glass-prompt-input";
 import { LiquidGlassMessageBubble } from "@/components/ui/liquid-glass-message-bubble";
 import { LiquidGlassPromptToolbar } from "@/components/ui/liquid-glass-prompt-toolbar";
+import { LiquidGlassPromptSuggestions } from "@/components/ui/liquid-glass-prompt-suggestions";
 import { Sparkles, Plus, Globe, MoreHorizontal, Bot, User, Settings } from "lucide-react";
 import { LiquidGlassMenu } from "@/components/ui/liquid-glass-menu";
 import { LiquidGlassVoiceAssistant } from "@/components/ui/liquid-glass-voice-assistant";
@@ -277,6 +278,27 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/components/liquid-glass-prompt-toolbar",
+    },
+    {
+      name: "Liquid Glass Prompt Suggestions",
+      description: "Suggested prompts rendered as glass chips for quick actions.",
+      component: (
+        <div className="flex justify-center w-full">
+          <div className="w-full max-w-lg">
+            <LiquidGlassPromptSuggestions
+              size="sm"
+              layout="chips"
+              compact
+              suggestions={[
+                { label: "Summarize this", icon: <Sparkles className="w-3 h-3" /> },
+                { label: "Improve writing", icon: <Settings className="w-3 h-3" /> },
+                { label: "Explain step-by-step", icon: <Sparkles className="w-3 h-3" /> },
+              ]}
+            />
+          </div>
+        </div>
+      ),
+      route: "/components/liquid-glass-prompt-suggestions",
     },
   ];
 
