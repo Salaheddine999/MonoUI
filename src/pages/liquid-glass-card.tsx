@@ -144,6 +144,16 @@ export { LiquidGlassCard };`;
               </div>
             </div>
 
+            {/* Installation */}
+            <div className="mb-16">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-2xl font-medium mb-6">Installation</h2>
+                <p className="text-muted-foreground mb-6">
+                  This component uses only React and internal utilities. No additional dependencies are required.
+                </p>
+              </div>
+            </div>
+
             {/* How It Works */}
             <div className="mb-16">
               <div className="max-w-4xl mx-auto">

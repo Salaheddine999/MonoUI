@@ -311,6 +311,43 @@ export { LiquidGlassLoader };`;
               </div>
             </div>
 
+            {/* Installation */}
+            <div className="mb-16">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-2xl font-medium mb-6">Installation</h2>
+                <p className="text-muted-foreground mb-6">
+                  Let's begin by installing the required dependencies:
+                </p>
+                <div className="relative">
+                  <div className="rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
+                    <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between" style={{ backgroundColor: "#282c34" }}>
+                      <div className="flex items-center gap-3">
+                        <div className="flex gap-2">
+                          <div className="w-3 h-3 bg-red-500 rounded-full shadow-sm"></div>
+                          <div className="w-3 h-3 bg-yellow-500 rounded-full shadow-sm"></div>
+                          <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm"></div>
+                        </div>
+                        <span className="text-slate-400 text-sm font-medium ml-4">Terminal</span>
+                      </div>
+                      <Button size="sm" variant="ghost" className="text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors" onClick={() => copyToClipboard("npm install framer-motion", "install")}>
+                        {copiedCode === "install" ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                      </Button>
+                    </div>
+                    <div className="overflow-x-auto">
+                      <div className="p-6" style={{ backgroundColor: "#282c34", color: "#abb2bf", fontSize: "0.875rem", lineHeight: "1.6" }}>
+                        <div className="flex items-center gap-2">
+                          <span className="text-green-400">$</span>
+                          <span className="text-blue-400">npm</span>
+                          <span className="text-yellow-400">install</span>
+                          <span className="text-purple-400">framer-motion</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* How It Works */}
             <div className="mb-16">
               <div className="max-w-4xl mx-auto">
