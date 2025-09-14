@@ -22,6 +22,7 @@ import { LiquidGlassThemeToggle } from "@/components/ui/liquid-glass-theme-toggl
 import { LiquidGlassSocialButtons } from "@/components/ui/liquid-glass-social-buttons";
 import { LiquidGlassCopyEmailButton } from "@/components/ui/liquid-glass-copy-email-button";
 import { LiquidGlassWaitlistForm } from "@/components/ui/liquid-glass-waitlist-form";
+import { LiquidGlassLoader } from "@/components/ui/liquid-glass-loader";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
@@ -182,6 +183,16 @@ export default function ComponentsPage() {
         </div>
       ),
       route: "/components/liquid-glass-waitlist-form",
+    },
+    {
+      name: "Liquid Glass Loader",
+      description: "Animated loading indicators with liquid glass styling and multiple variants.",
+      component: (
+        <div className="flex justify-center">
+          <LiquidGlassLoader size="sm" variant="spinner" />
+        </div>
+      ),
+      route: "/components/liquid-glass-loader",
     },
   ];
 
