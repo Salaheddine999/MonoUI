@@ -20,7 +20,7 @@ interface LiquidGlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
 const LiquidGlassCard = React.forwardRef<HTMLDivElement, LiquidGlassCardProps>(
   ({ children, size = "md", variant = "soft", tint = "none", className, ...props }, ref) => {
     const baseClasses =
-      "border align-middle select-none font-sans text-white rounded-2xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-500 antialiased relative overflow-hidden";
+      "border align-middle select-none font-sans text-white rounded-2xl backdrop-blur-md backdrop-saturate-150 transition-all duration-500 antialiased relative overflow-hidden";
 
     const glassClasses =
       variant === "intense"

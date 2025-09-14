@@ -28,7 +28,7 @@ const LiquidGlassMessage = React.forwardRef<
     ref
   ) => {
     const baseClasses =
-      "border align-middle select-none font-sans text-white rounded-2xl backdrop-blur-lg transition-all duration-500 antialiased relative overflow-hidden flex items-start gap-3";
+      "border align-middle select-none font-sans text-white rounded-2xl backdrop-blur-md transition-all duration-500 antialiased relative overflow-hidden flex items-start gap-3";
 
     const glassClasses =
       "bg-gradient-to-br from-white/15 via-white/8 to-white/5 border-white/40 shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-1px_2px_rgba(0,0,0,0.1),0_8px_32px_rgba(0,0,0,0.3),0_2px_8px_rgba(0,0,0,0.2)] hover:from-white/25 hover:via-white/15 hover:to-white/10 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_-1px_2px_rgba(0,0,0,0.1),0_12px_40px_rgba(0,0,0,0.4),0_4px_12px_rgba(0,0,0,0.3)] hover:scale-[1.02]";
