@@ -84,7 +84,7 @@ export default function HeroSection() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
           <Button
-            className="glassmorphism-button text-white font-medium text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 rounded-2xl transition-all duration-300 w-full sm:w-auto"
+            className="glassmorphism-button text-white font-medium text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 rounded-2xl transition-all duration-300 w-full sm:w-auto"
             data-testid="button-start-building"
             onClick={() => setLocation("/components")}
           >
