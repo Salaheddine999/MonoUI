@@ -23,6 +23,7 @@ import LiquidGlassCopyEmailButtonPage from "@/pages/liquid-glass-copy-email-butt
 import LiquidGlassWaitlistFormPage from "@/pages/liquid-glass-waitlist-form";
 import LiquidGlassLoaderPage from "@/pages/liquid-glass-loader";
 import LiquidGlassPromptSuggestionsPage from "@/pages/liquid-glass-prompt-suggestions";
+import { Analytics } from '@vercel/analytics/react';
 
 function Router() {
   return (
@@ -136,6 +137,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <Analytics/>
       </TooltipProvider>
     </QueryClientProvider>
   );
