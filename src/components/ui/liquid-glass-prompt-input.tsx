@@ -200,14 +200,16 @@ export const LiquidGlassPromptInput = React.forwardRef<
                   type="button"
                   onClick={a.onClick}
                   className={cn(
-                    compact ? "inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full" : "inline-flex items-center gap-2 px-3 py-1.5 rounded-full",
+                    compact ? "inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-full" : "inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-full",
                     "bg-white/10 hover:bg-white/20 border border-white/30 hover:border-white/40",
-                    compact ? "text-white/90 text-[11px] backdrop-blur-sm transition-colors" : "text-white/90 text-xs backdrop-blur-sm transition-colors"
+                    compact ? "text-white/90 text-[11px] backdrop-blur-sm transition-colors" : "text-white/90 text-xs backdrop-blur-sm transition-colors",
+                    // Icon-only buttons get square aspect ratio for perfect centering
+                    !a.label && (compact ? "w-8 h-8 p-0" : "w-9 h-9 p-0")
                   )}
                   aria-label={a.ariaLabel ?? a.label}
                 >
                   {a.icon}
-                  <span>{a.label}</span>
+                  {a.label && <span>{a.label}</span>}
                 </button>
               ))}
             </div>
