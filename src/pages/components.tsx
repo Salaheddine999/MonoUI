@@ -6,76 +6,76 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 
 // Import UI components for demonstration
-import { LiquidGlassButton } from "@/components/ui/liquid-glass-button";
-import { LiquidGlassCard } from "@/components/ui/liquid-glass-card";
-import { LiquidGlassInput } from "@/components/ui/liquid-glass-input";
-import { LiquidGlassButtonGroup } from "@/components/ui/liquid-glass-button-group";
-import { LiquidGlassMessage } from "@/components/ui/liquid-glass-message";
-import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
-import { LiquidGlassPromptInput } from "@/components/ui/liquid-glass-prompt-input";
-import { LiquidGlassMessageBubble } from "@/components/ui/liquid-glass-message-bubble";
-import { LiquidGlassPromptToolbar } from "@/components/ui/liquid-glass-prompt-toolbar";
-import { LiquidGlassPromptSuggestions } from "@/components/ui/liquid-glass-prompt-suggestions";
+import { GlassButton } from "@/components/ui/glass-button";
+import { GlassCard } from "@/components/ui/glass-card";
+import { GlassInput } from "@/components/ui/glass-input";
+import { GlassButtonGroup } from "@/components/ui/glass-button-group";
+import { GlassMessage } from "@/components/ui/glass-message";
+import { GlassToggle } from "@/components/ui/glass-toggle";
+import { GlassPromptInput } from "@/components/ui/glass-prompt-input";
+import { GlassMessageBubble } from "@/components/ui/glass-message-bubble";
+import { GlassPromptToolbar } from "@/components/ui/glass-prompt-toolbar";
+import { GlassPromptSuggestions } from "@/components/ui/glass-prompt-suggestions";
 import { Sparkles, Plus, Globe, MoreHorizontal, Bot, User, Settings } from "lucide-react";
-import { LiquidGlassMenu } from "@/components/ui/liquid-glass-menu";
-import { LiquidGlassVoiceAssistant } from "@/components/ui/liquid-glass-voice-assistant";
-import { LiquidGlassThemeToggle } from "@/components/ui/liquid-glass-theme-toggle";
-import { LiquidGlassSocialButtons } from "@/components/ui/liquid-glass-social-buttons";
-import { LiquidGlassCopyEmailButton } from "@/components/ui/liquid-glass-copy-email-button";
-import { LiquidGlassWaitlistForm } from "@/components/ui/liquid-glass-waitlist-form";
-import { LiquidGlassLoader } from "@/components/ui/liquid-glass-loader";
+import { GlassMenu } from "@/components/ui/glass-menu";
+import { GlassVoiceAssistant } from "@/components/ui/glass-voice-assistant";
+import { GlassThemeToggle } from "@/components/ui/glass-theme-toggle";
+import { GlassSocialButtons } from "@/components/ui/glass-social-buttons";
+import { GlassCopyEmailButton } from "@/components/ui/glass-copy-email-button";
+import { GlassWaitlistForm } from "@/components/ui/glass-waitlist-form";
+import { GlassLoader } from "@/components/ui/glass-loader";
 
 export default function ComponentsPage() {
   const [, setLocation] = useLocation();
 
   const components = [
     {
-      name: "Liquid Glass Button",
-      description: "A premium button component with liquid glass effects.",
+      name: "Button",
+      description: "A premium button component with glass effects.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassButton size="md">Click on me</LiquidGlassButton>
+          <GlassButton size="md">Click on me</GlassButton>
         </div>
       ),
-      route: "/components/liquid-glass-button",
+      route: "/components/glass-button",
     },
     {
-      name: "Liquid Glass Card",
+      name: "Card",
       description:
         "An elegant card component with sophisticated glass effects.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassCard size="sm" className="w-48 h-24">
+          <GlassCard size="sm" className="w-48 h-24">
             <div className="text-center">
               <h3 className="text-sm font-semibold mb-1">Card Title</h3>
               <p className="text-xs text-white/80">Preview content</p>
             </div>
-          </LiquidGlassCard>
+          </GlassCard>
         </div>
       ),
-      route: "/components/liquid-glass-card",
+      route: "/components/glass-card",
     },
     {
-      name: "Liquid Glass Input",
-      description: "A beautiful input component with liquid glass styling.",
+      name: "Input",
+      description: "A beautiful input component with glass styling.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassInput
+          <GlassInput
             size="sm"
             placeholder="Enter text..."
             className="w-48"
           />
         </div>
       ),
-      route: "/components/liquid-glass-input",
+      route: "/components/glass-input",
     },
     {
-      name: "Liquid Glass Button Group",
+      name: "Button Group",
       description:
-        "A container for grouping buttons with liquid glass styling.",
+        "A container for grouping buttons with glass styling.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassButtonGroup size="sm" orientation="horizontal">
+          <GlassButtonGroup size="sm" orientation="horizontal">
             <button className="px-3 py-1 text-xs font-medium text-white/70">
               Btn 1
             </button>
@@ -85,39 +85,39 @@ export default function ComponentsPage() {
             <button className="px-3 py-1 text-xs font-medium text-white/70">
               Btn 3
             </button>
-          </LiquidGlassButtonGroup>
+          </GlassButtonGroup>
         </div>
       ),
-      route: "/components/liquid-glass-button-group",
+      route: "/components/glass-button-group",
     },
     {
-      name: "Liquid Glass Message",
-      description: "A notification component with liquid glass styling.",
+      name: "Message",
+      description: "A notification component with glass styling.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassMessage variant="info" size="sm">
+          <GlassMessage variant="info" size="sm">
             <div className="text-xs">Sample message</div>
-          </LiquidGlassMessage>
+          </GlassMessage>
         </div>
       ),
-      route: "/components/liquid-glass-message",
+      route: "/components/glass-message",
     },
     {
-      name: "Liquid Glass Toggle",
-      description: "A toggle switch with premium liquid glass effects.",
+      name: "Toggle",
+      description: "A toggle switch with premium glass effects.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassToggle size="sm" />
+          <GlassToggle size="sm" />
         </div>
       ),
-      route: "/components/liquid-glass-toggle",
+      route: "/components/glass-toggle",
     },
     {
-      name: "Liquid Glass Menu",
-      description: "A menu for navigation or grouped actions with liquid glass styling.",
+      name: "Menu",
+      description: "A menu for navigation or grouped actions with glass styling.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassMenu
+          <GlassMenu
             items={[
               { key: "home", label: "Home" },
               { key: "search", label: "Search" },
@@ -128,30 +128,30 @@ export default function ComponentsPage() {
           />
         </div>
       ),
-      route: "/components/liquid-glass-menu",
+      route: "/components/glass-menu",
     },
     {
-      name: "Liquid Glass Theme Toggle",
-      description: "A theme switcher that toggles Tailwind dark mode with liquid glass styling.",
+      name: "Theme Toggle",
+      description: "A theme switcher that toggles Tailwind dark mode with glass styling.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassThemeToggle size="sm" />
+          <GlassThemeToggle size="sm" />
         </div>
       ),
-      route: "/components/liquid-glass-theme-toggle",
+      route: "/components/glass-theme-toggle",
     },
     {
-      name: "Liquid Glass Social Buttons",
-      description: "GitHub, Google, and Facebook login buttons with liquid glass styling.",
+      name: "Social Buttons",
+      description: "GitHub, Google, and Facebook login buttons with glass styling.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassSocialButtons size="sm" className="scale-90" />
+          <GlassSocialButtons size="sm" className="scale-90" />
         </div>
       ),
-      route: "/components/liquid-glass-social-buttons",
+      route: "/components/glass-social-buttons",
     },
     {
-      name: "Liquid Glass Copy Email Button",
+      name: "Copy Email Button",
       description: "Button that displays an email and copies it with a delightful animation.",
       component: (
         <div className="flex justify-center">
@@ -159,20 +159,20 @@ export default function ComponentsPage() {
           <div className="max-w-full">
             <span className="scale-90 inline-block">
               {/* Using a representative email */}
-              <LiquidGlassCopyEmailButton email="hello@monoui.dev" size="sm" />
+              <GlassCopyEmailButton email="hello@monoui.dev" size="sm" />
             </span>
           </div>
         </div>
       ),
-      route: "/components/liquid-glass-copy-email-button",
+      route: "/components/glass-copy-email-button",
     },
     {
-      name: "Liquid Glass Waitlist Form",
+      name: "Waitlist Form",
       description: "Email collection form with animated submission states and glass styling.",
       component: (
         <div className="flex justify-center">
           <div className="w-full max-w-xs">
-            <LiquidGlassWaitlistForm 
+            <GlassWaitlistForm 
               size="sm" 
               className="scale-90"
               onSubmit={async (email) => {
@@ -183,28 +183,28 @@ export default function ComponentsPage() {
           </div>
         </div>
       ),
-      route: "/components/liquid-glass-waitlist-form",
+      route: "/components/glass-waitlist-form",
     },
     {
-      name: "Liquid Glass Loader",
-      description: "Animated loading indicators with liquid glass styling and multiple variants.",
+      name: "Loader",
+      description: "Animated loading indicators with glass styling and multiple variants.",
       component: (
         <div className="flex justify-center">
-          <LiquidGlassLoader size="sm" variant="spinner" />
+          <GlassLoader size="sm" variant="spinner" />
         </div>
       ),
-      route: "/components/liquid-glass-loader",
+      route: "/components/glass-loader",
     },
   ];
 
   const promptComponents = [
     {
-      name: "Liquid Glass Prompt Input",
+      name: "Prompt Input",
       description: "An AI prompt input with glass effects, prefix icon, and send action.",
       component: (
         <div className="flex justify-center w-full">
           <div className="w-full max-w-sm">
-            <LiquidGlassPromptInput
+            <GlassPromptInput
               size="sm"
               layout="panel"
               placeholder="Message ChatGPT"
@@ -221,15 +221,15 @@ export default function ComponentsPage() {
           </div>
         </div>
       ),
-      route: "/components/liquid-glass-prompt-input",
+      route: "/components/glass-prompt-input",
     },
     {
-      name: "Liquid Glass Voice Assistant",
+      name: "Voice Assistant",
       description: "A glassy, animated voice assistant with listening pulse and live waveform.",
       component: (
         <div className="flex justify-center w-full">
           <div className="w-full max-w-[220px]">
-            <LiquidGlassVoiceAssistant
+            <GlassVoiceAssistant
               size="sm"
               layout="panel"
               title="MonoUI"
@@ -243,49 +243,49 @@ export default function ComponentsPage() {
           </div>
         </div>
       ),
-      route: "/components/liquid-glass-voice-assistant",
+      route: "/components/glass-voice-assistant",
     },
     {
-      name: "Liquid Glass Message Bubble",
+      name: "Message Bubble",
       description: "Chat message bubbles with glass effects for conversations.",
       component: (
         <div className="flex justify-center w-full">
           <div className="w-full max-w-sm space-y-2">
-            <LiquidGlassMessageBubble
+            <GlassMessageBubble
               sender="assistant"
               size="sm"
               avatar={<Bot className="w-3 h-3" />}
               compact
             >
               Hello! How can I help?
-            </LiquidGlassMessageBubble>
+            </GlassMessageBubble>
           </div>
         </div>
       ),
-      route: "/components/liquid-glass-message-bubble",
+      route: "/components/glass-message-bubble",
     },
     {
-      name: "Liquid Glass Prompt Toolbar",
+      name: "Prompt Toolbar",
       description: "Configuration toolbar with model selector, temperature, and presets.",
       component: (
         <div className="flex justify-center w-full">
           <div className="w-full max-w-lg">
-            <LiquidGlassPromptToolbar
+            <GlassPromptToolbar
               compact
               className="w-full"
             />
           </div>
         </div>
       ),
-      route: "/components/liquid-glass-prompt-toolbar",
+      route: "/components/glass-prompt-toolbar",
     },
     {
-      name: "Liquid Glass Prompt Suggestions",
+      name: "Prompt Suggestions",
       description: "Suggested prompts rendered as glass chips for quick actions.",
       component: (
         <div className="flex justify-center w-full">
           <div className="w-full max-w-lg">
-            <LiquidGlassPromptSuggestions
+            <GlassPromptSuggestions
               size="sm"
               layout="chips"
               compact
@@ -298,7 +298,7 @@ export default function ComponentsPage() {
           </div>
         </div>
       ),
-      route: "/components/liquid-glass-prompt-suggestions",
+      route: "/components/glass-prompt-suggestions",
     },
   ];
 

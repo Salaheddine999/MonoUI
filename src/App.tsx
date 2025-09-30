@@ -5,24 +5,24 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import Components from "@/pages/components";
-import LiquidGlassButtonPage from "@/pages/liquid-glass-button";
-import LiquidGlassCardPage from "@/pages/liquid-glass-card";
-import LiquidGlassInputPage from "@/pages/liquid-glass-input";
-import LiquidGlassButtonGroupPage from "@/pages/liquid-glass-button-group";
-import LiquidGlassMessagePage from "@/pages/liquid-glass-message";
+import GlassButtonPage from "@/pages/glass-button";
+import GlassCardPage from "@/pages/glass-card";
+import GlassInputPage from "@/pages/glass-input";
+import GlassButtonGroupPage from "@/pages/glass-button-group";
+import GlassMessagePage from "@/pages/glass-message";
 import NotFound from "@/pages/not-found";
-import LiquidGlassTogglePage from "@/pages/liquid-glass-toggle";
-import LiquidGlassPromptInputPage from "@/pages/liquid-glass-prompt-input";
-import LiquidGlassMessageBubblePage from "@/pages/liquid-glass-message-bubble";
-import LiquidGlassPromptToolbarPage from "@/pages/liquid-glass-prompt-toolbar";
-import LiquidGlassMenuPage from "@/pages/liquid-glass-menu";
-import LiquidGlassVoiceAssistantPage from "@/pages/liquid-glass-voice-assistant";
-import LiquidGlassThemeTogglePage from "@/pages/liquid-glass-theme-toggle";
-import LiquidGlassSocialButtonsPage from "@/pages/liquid-glass-social-buttons";
-import LiquidGlassCopyEmailButtonPage from "@/pages/liquid-glass-copy-email-button";
-import LiquidGlassWaitlistFormPage from "@/pages/liquid-glass-waitlist-form";
-import LiquidGlassLoaderPage from "@/pages/liquid-glass-loader";
-import LiquidGlassPromptSuggestionsPage from "@/pages/liquid-glass-prompt-suggestions";
+import GlassTogglePage from "@/pages/glass-toggle";
+import GlassPromptInputPage from "@/pages/glass-prompt-input";
+import GlassMessageBubblePage from "@/pages/glass-message-bubble";
+import GlassPromptToolbarPage from "@/pages/glass-prompt-toolbar";
+import GlassMenuPage from "@/pages/glass-menu";
+import GlassVoiceAssistantPage from "@/pages/glass-voice-assistant";
+import GlassThemeTogglePage from "@/pages/glass-theme-toggle";
+import GlassSocialButtonsPage from "@/pages/glass-social-buttons";
+import GlassCopyEmailButtonPage from "@/pages/glass-copy-email-button";
+import GlassWaitlistFormPage from "@/pages/glass-waitlist-form";
+import GlassLoaderPage from "@/pages/glass-loader";
+import GlassPromptSuggestionsPage from "@/pages/glass-prompt-suggestions";
 import { Analytics } from '@vercel/analytics/react';
 
 function Router() {
@@ -31,101 +31,101 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/components" component={Components} />
       <Route
-        path="/components/liquid-glass-button"
-        component={LiquidGlassButtonPage}
+        path="/components/glass-button"
+        component={GlassButtonPage}
       />
-      <Route path="/components/liquid-glass-card" component={LiquidGlassCardPage} />
-      <Route path="/components/liquid-glass-input" component={LiquidGlassInputPage} />
+      <Route path="/components/glass-card" component={GlassCardPage} />
+      <Route path="/components/glass-input" component={GlassInputPage} />
       <Route
-        path="/components/liquid-glass-button-group"
-        component={LiquidGlassButtonGroupPage}
+        path="/components/glass-button-group"
+        component={GlassButtonGroupPage}
       />
-      <Route path="/components/liquid-glass-message" component={LiquidGlassMessagePage} />
-      <Route path="/components/liquid-glass-toggle" component={LiquidGlassTogglePage} />
+      <Route path="/components/glass-message" component={GlassMessagePage} />
+      <Route path="/components/glass-toggle" component={GlassTogglePage} />
       <Route
-        path="/components/liquid-glass-theme-toggle"
-        component={LiquidGlassThemeTogglePage}
-      />
-      <Route
-        path="/components/liquid-glass-social-buttons"
-        component={LiquidGlassSocialButtonsPage}
+        path="/components/glass-theme-toggle"
+        component={GlassThemeTogglePage}
       />
       <Route
-        path="/components/liquid-glass-copy-email-button"
-        component={LiquidGlassCopyEmailButtonPage}
+        path="/components/glass-social-buttons"
+        component={GlassSocialButtonsPage}
       />
       <Route
-        path="/components/liquid-glass-waitlist-form"
-        component={LiquidGlassWaitlistFormPage}
+        path="/components/glass-copy-email-button"
+        component={GlassCopyEmailButtonPage}
       />
       <Route
-        path="/components/liquid-glass-loader"
-        component={LiquidGlassLoaderPage}
+        path="/components/glass-waitlist-form"
+        component={GlassWaitlistFormPage}
       />
       <Route
-        path="/components/liquid-glass-prompt-input"
-        component={LiquidGlassPromptInputPage}
+        path="/components/glass-loader"
+        component={GlassLoaderPage}
       />
       <Route
-        path="/components/liquid-glass-message-bubble"
-        component={LiquidGlassMessageBubblePage}
+        path="/components/glass-prompt-input"
+        component={GlassPromptInputPage}
       />
       <Route
-        path="/components/liquid-glass-prompt-toolbar"
-        component={LiquidGlassPromptToolbarPage}
+        path="/components/glass-message-bubble"
+        component={GlassMessageBubblePage}
       />
       <Route
-        path="/components/liquid-glass-prompt-suggestions"
-        component={LiquidGlassPromptSuggestionsPage}
+        path="/components/glass-prompt-toolbar"
+        component={GlassPromptToolbarPage}
       />
       <Route
-        path="/components/liquid-glass-voice-assistant"
-        component={LiquidGlassVoiceAssistantPage}
-      />
-      <Route path="/components/liquid-glass-menu" component={LiquidGlassMenuPage} />
-      <Route path="/liquid-glass-button" component={LiquidGlassButtonPage} />
-      <Route path="/liquid-glass-card" component={LiquidGlassCardPage} />
-      <Route path="/liquid-glass-input" component={LiquidGlassInputPage} />
-      <Route
-        path="/liquid-glass-button-group"
-        component={LiquidGlassButtonGroupPage}
-      />
-      <Route path="/liquid-glass-message" component={LiquidGlassMessagePage} />
-      <Route path="/liquid-glass-toggle" component={LiquidGlassTogglePage} />
-      <Route
-        path="/liquid-glass-theme-toggle"
-        component={LiquidGlassThemeTogglePage}
+        path="/components/glass-prompt-suggestions"
+        component={GlassPromptSuggestionsPage}
       />
       <Route
-        path="/liquid-glass-social-buttons"
-        component={LiquidGlassSocialButtonsPage}
+        path="/components/glass-voice-assistant"
+        component={GlassVoiceAssistantPage}
+      />
+      <Route path="/components/glass-menu" component={GlassMenuPage} />
+      <Route path="/glass-button" component={GlassButtonPage} />
+      <Route path="/glass-card" component={GlassCardPage} />
+      <Route path="/glass-input" component={GlassInputPage} />
+      <Route
+        path="/glass-button-group"
+        component={GlassButtonGroupPage}
+      />
+      <Route path="/glass-message" component={GlassMessagePage} />
+      <Route path="/glass-toggle" component={GlassTogglePage} />
+      <Route
+        path="/glass-theme-toggle"
+        component={GlassThemeTogglePage}
       />
       <Route
-        path="/liquid-glass-copy-email-button"
-        component={LiquidGlassCopyEmailButtonPage}
+        path="/glass-social-buttons"
+        component={GlassSocialButtonsPage}
       />
       <Route
-        path="/liquid-glass-waitlist-form"
-        component={LiquidGlassWaitlistFormPage}
-      />
-      <Route path="/liquid-glass-loader" component={LiquidGlassLoaderPage} />
-      <Route
-        path="/liquid-glass-prompt-input"
-        component={LiquidGlassPromptInputPage}
+        path="/glass-copy-email-button"
+        component={GlassCopyEmailButtonPage}
       />
       <Route
-        path="/liquid-glass-message-bubble"
-        component={LiquidGlassMessageBubblePage}
+        path="/glass-waitlist-form"
+        component={GlassWaitlistFormPage}
+      />
+      <Route path="/glass-loader" component={GlassLoaderPage} />
+      <Route
+        path="/glass-prompt-input"
+        component={GlassPromptInputPage}
       />
       <Route
-        path="/liquid-glass-prompt-toolbar"
-        component={LiquidGlassPromptToolbarPage}
+        path="/glass-message-bubble"
+        component={GlassMessageBubblePage}
       />
       <Route
-        path="/liquid-glass-prompt-suggestions"
-        component={LiquidGlassPromptSuggestionsPage}
+        path="/glass-prompt-toolbar"
+        component={GlassPromptToolbarPage}
       />
-      <Route path="/liquid-glass-menu" component={LiquidGlassMenuPage} />
+      <Route
+        path="/glass-prompt-suggestions"
+        component={GlassPromptSuggestionsPage}
+      />
+      <Route path="/glass-menu" component={GlassMenuPage} />
       <Route component={NotFound} />
     </Switch>
   );

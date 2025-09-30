@@ -5,7 +5,7 @@ A beautiful collection of modern UI components with stunning glass effects. Perf
 ## What's Inside
 
 🎨 **Beautiful Components**
-- Liquid Glass buttons, cards, and inputs with smooth animations
+- Glass buttons, cards, and inputs with smooth animations
 - Chat bubbles and voice assistant interfaces
 - Loading animations and interactive toggles
 - Social login buttons and waitlist forms
