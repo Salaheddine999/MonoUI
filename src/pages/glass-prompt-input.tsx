@@ -1,28 +1,9 @@
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import React from "react";
 import { GlassPromptInput } from "@/components/ui/glass-prompt-input";
-import { ArrowLeft, Copy, Check, Sparkles, Plus, Globe, MoreHorizontal } from "lucide-react";
-import { useLocation } from "wouter";
-import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Sparkles, Plus, Globe, MoreHorizontal } from "lucide-react";
+import ComponentPageLayout from "@/components/component-page-layout";
 
 export default function GlassPromptInputPage() {
-  const [, setLocation] = useLocation();
-  const [copiedCode, setCopiedCode] = useState<string | null>(null);
-  const [value, setValue] = useState("");
-
-  const copyToClipboard = async (code: string, id: string) => {
-    try {
-      await navigator.clipboard.writeText(code);
-      setCopiedCode(id);
-      setTimeout(() => setCopiedCode(null), 2000);
-    } catch (err) {
-      console.error("Failed to copy: ", err);
-    }
-  };
-
   const componentCode = `"use client";
 
 import React from "react";
@@ -144,250 +125,35 @@ export default function Example() {
 }`;
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
-      {/* Background Effects */}
-      <div className="fixed inset-0 bg-gradient-to-br from-background via-secondary to-background">
-        <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent"></div>
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10">
-        <Navigation />
-
-        <div className="pt-40 pb-8 px-4">
-          <div className="max-w-6xl mx-auto">
-            {/* Header */}
-            <div className="mb-16 text-left">
-              <Button
-                variant="ghost"
-                onClick={() => setLocation("/components")}
-                className="mb-6 text-muted-foreground hover:text-foreground"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Components
-              </Button>
-              <h1 className="text-3xl md:text-4xl font-semibold mb-6 leading-tight">
-                <span className="gradient-text">Prompt Input</span>
-              </h1>
-            </div>
-
-            {/* Live Usage */}
-            <div className="mb-16">
-              <h2 className="text-2xl font-medium mb-6">Live Usage</h2>
-              <div className="relative overflow-hidden w-full min-h-[220px] rounded-lg border border-border/20">
-                <img
-                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"
-                  alt="Abstract painting background"
-                  className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
-                  aria-hidden
-                />
-                <div className="absolute inset-0 bg-black/30" aria-hidden />
-                <div className="relative z-10 flex items-center justify-center w-full h-full p-6">
-                  <div className="w-full max-w-2xl">
-                    <GlassPromptInput
-                      size="lg"
-                      layout="panel"
-                      value={value}
-                      onChange={(e) => setValue(e.target.value)}
-                      onSend={() => alert('Sending: ' + value)}
-                      prefixIcon={<Sparkles className="w-5 h-5" />}
-                      sendLabel="Send"
-                      placeholder="Message ChatGPT"
-                      actions={[
-                        { label: "", icon: <Plus className="w-4 h-4" />, ariaLabel: "Add" },
-                        { label: "Search", icon: <Globe className="w-4 h-4" /> },
-                        { label: "", icon: <MoreHorizontal className="w-4 h-4" />, ariaLabel: "More" },
-                      ]}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Installation */}
-            <div className="mb-16">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-medium mb-6">Installation</h2>
-                <p className="text-muted-foreground mb-6">
-                  Let's begin by installing the required dependencies:
-                </p>
-                <div className="relative">
-                  <div className="rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
-                    <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between" style={{ backgroundColor: "#282c34" }}>
-                      <div className="flex items-center gap-3">
-                        <div className="flex gap-2">
-                          <div className="w-3 h-3 bg-red-500 rounded-full shadow-sm"></div>
-                          <div className="w-3 h-3 bg-yellow-500 rounded-full shadow-sm"></div>
-                          <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm"></div>
-                        </div>
-                        <span className="text-slate-400 text-sm font-medium ml-4">Terminal</span>
-                      </div>
-                      <Button size="sm" variant="ghost" className="text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors" onClick={() => copyToClipboard("npm install lucide-react", "install")}>
-                        {copiedCode === "install" ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                      </Button>
-                    </div>
-                    <div className="overflow-x-auto">
-                      <div className="p-6" style={{ backgroundColor: "#282c34", color: "#abb2bf", fontSize: "0.875rem", lineHeight: "1.6" }}>
-                        <div className="flex items-center gap-2">
-                          <span className="text-green-400">$</span>
-                          <span className="text-blue-400">npm</span>
-                          <span className="text-yellow-400">install</span>
-                          <span className="text-purple-400">lucide-react</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* How It Works */}
-            <div className="mb-16">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-medium mb-6">How It Works</h2>
-                <p className="text-muted-foreground mb-6">
-                  The `GlassPromptInput` provides a premium prompt field with glass
-                  visuals and prompt-specific affordances. It includes:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-8">
-                  <li>Layered gradients, shadows, and backdrop blur for realistic glass.</li>
-                  <li>Keyboard handling: Enter to send (single-line) and Ctrl+Enter for multiline.</li>
-                  <li>Two layout variants: `inline` (compact) and `panel` (with bottom chips + send).</li>
-                  <li>Prefix icon slot and optional action chips for quick tools (e.g., Search).</li>
-                  <li>Accessible send button with `aria-label` and focus-visible styles.</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Component Code */}
-            <div className="mb-16">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-medium mb-6">Component Code</h2>
-                <div className="relative">
-                  <div className="rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
-                    <div
-                      className="px-6 py-4 border-b border-slate-800 flex items-center justify-between"
-                      style={{ backgroundColor: "#282c34" }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="flex gap-2">
-                          <div className="w-3 h-3 bg-red-500 rounded-full shadow-sm"></div>
-                          <div className="w-3 h-3 bg-yellow-500 rounded-full shadow-sm"></div>
-                          <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm"></div>
-                        </div>
-                        <span className="text-slate-400 text-sm font-medium ml-4">
-                          glass-prompt-input.tsx
-                        </span>
-                      </div>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors"
-                        onClick={() => copyToClipboard(componentCode, "component")}
-                      >
-                        {copiedCode === "component" ? (
-                          <Check className="w-4 h-4" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </Button>
-                    </div>
-                    <div className="overflow-x-auto">
-                      <SyntaxHighlighter
-                        language="tsx"
-                        style={oneDark}
-                        customStyle={{
-                          margin: 0,
-                          padding: "2rem",
-                          background: "#282c34",
-                          fontSize: "0.875rem",
-                          lineHeight: "1.6",
-                        }}
-                        showLineNumbers={true}
-                        wrapLines={true}
-                        wrapLongLines={true}
-                      >
-                        {componentCode}
-                      </SyntaxHighlighter>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Usage Example */}
-            <div className="mb-16">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-medium mb-6">Usage Example</h2>
-                <div className="relative">
-                  <div className="rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
-                    <div
-                      className="px-6 py-4 border-b border-slate-800 flex items-center justify-between"
-                      style={{ backgroundColor: "#282c34" }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="flex gap-2">
-                          <div className="w-3 h-3 bg-red-500 rounded-full shadow-sm"></div>
-                          <div className="w-3 h-3 bg-yellow-500 rounded-full shadow-sm"></div>
-                          <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm"></div>
-                        </div>
-                        <span className="text-slate-400 text-sm font-medium ml-4">
-                          example.tsx
-                        </span>
-                      </div>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors"
-                        onClick={() => copyToClipboard(usageCode, "usage")}
-                      >
-                        {copiedCode === "usage" ? (
-                          <Check className="w-4 h-4" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </Button>
-                    </div>
-                    <div className="overflow-x-auto">
-                      <SyntaxHighlighter
-                        language="tsx"
-                        style={oneDark}
-                        customStyle={{
-                          margin: 0,
-                          padding: "2rem",
-                          background: "#282c34",
-                          fontSize: "0.875rem",
-                          lineHeight: "1.6",
-                        }}
-                        showLineNumbers={true}
-                        wrapLines={true}
-                        wrapLongLines={true}
-                      >
-                        {usageCode}
-                      </SyntaxHighlighter>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-16">
-              <div className="max-w-4xl mx-auto">
-                <p className="text-muted-foreground text-lg">
-                  The GlassPromptInput is tailored for AI prompts with optional
-                  prefix icons and a send action, inheriting the same glass layers and
-                  animations for a cohesive look.
-                </p>
-                <p className="text-muted-foreground mt-4">Happy Coding 👋</p>
-              </div>
-            </div>
-          </div>
+    <ComponentPageLayout
+      name="Prompt Input"
+      description="An AI prompt input with glass effects, prefix icon, action buttons, and send functionality."
+      preview={
+        <div className="w-full max-w-md">
+          <GlassPromptInput
+            size="md"
+            layout="panel"
+            placeholder="Message ChatGPT"
+            prefixIcon={<Sparkles className="w-4 h-4" />}
+            onSend={() => {}}
+            actions={[
+              { label: "", icon: <Plus className="w-4 h-4" />, ariaLabel: "Add" },
+              { label: "Search", icon: <Globe className="w-4 h-4" /> },
+              { label: "", icon: <MoreHorizontal className="w-4 h-4" />, ariaLabel: "More" },
+            ]}
+            className="w-full"
+          />
         </div>
-
-        <Footer />
-      </div>
-    </div>
+      }
+      features={[
+        "Glass-styled text input with frosted backdrop",
+        "Configurable prefix icon and action buttons",
+        "Send button with onSend callback",
+        "Panel and inline layout variants",
+        "Compact mode for space-constrained UIs"
+]}
+      componentCode={componentCode}
+      usageCode={usageCode}
+    />
   );
 }

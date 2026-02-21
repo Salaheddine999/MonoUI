@@ -1,62 +1,141 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Play, Youtube } from "lucide-react";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useRef, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function TutorialsSection() {
-  const { ref, isVisible } = useScrollAnimation();
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      if (headerRef.current) {
+        gsap.from(headerRef.current, {
+          x: -60,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      }
+
+      if (contentRef.current) {
+        gsap.from(contentRef.current, {
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="tutorials" className="relative py-20 px-4">
-      <div
-        ref={ref}
-        className={`max-w-6xl mx-auto transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        <Card className="glass rounded-3xl border-border/20">
-          <CardContent className="p-12 md:p-16 text-center">
-            <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-3xl flex items-center justify-center mb-8 mx-auto">
-              <svg
-                className="text-white"
-                style={{ width: "32px", height: "32px" }}
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-              </svg>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-6">
-              Tutorials Coming Soon
-            </h3>
-            <p className="text-md text-muted-foreground mb-8 max-w-2xl mx-auto">
-              We're working on comprehensive video tutorials to help you master
-              our design system. Learn how to build beautiful, consistent UIs
-              with React, Tailwind CSS, and Framer Motion.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                className="bg-[#EE3221] hover:bg-[#EE3221]/90 text-white rounded-xl px-8 py-6 text-sm font-medium text-base border-0"
-                asChild
-              >
-                <a
-                  href="https://youtube.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+    <section
+      ref={sectionRef}
+      id="tutorials"
+      className="relative py-20 px-6 md:px-12"
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Section header */}
+        <div ref={headerRef} className="mb-16 flex items-end justify-between">
+          <div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+              03 / Learn
+            </span>
+            <h2 className="mt-4 font-display text-5xl md:text-7xl tracking-tight">
+              TUTORIALS
+            </h2>
+          </div>
+          <p className="hidden md:block max-w-xs font-mono text-xs text-muted-foreground text-right leading-relaxed">
+            Step-by-step guides on building glass-effect interfaces with Mono UI.
+          </p>
+        </div>
+
+        {/* Split content */}
+        <div
+          ref={contentRef}
+          className="grid md:grid-cols-2 gap-px bg-border/20"
+        >
+          {/* YouTube Section */}
+          <div className="bg-background border border-border/20 p-8 md:p-12">
+            <div className="mb-8">
+              <div className="w-16 h-16 border border-[#FF0000]/20 flex items-center justify-center mb-6">
+                <svg
+                  className="text-[#FF0000]"
+                  style={{ width: "28px", height: "28px" }}
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
                 >
-                  <svg
-                    style={{ width: "24px", height: "24px" }}
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                  </svg>
-                  Watch Tutorials on YouTube
-                </a>
-              </Button>
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+              </div>
+              <h3 className="font-display text-3xl tracking-tight mb-4">
+                VIDEO SERIES
+              </h3>
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed mb-8">
+                Coming soon — comprehensive video tutorials covering every glass
+                component, from basic usage to advanced customization.
+              </p>
+              <a
+                href="https://youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 border border-[#FF0000]/30 px-6 py-3 font-mono text-xs uppercase tracking-widest text-[#FF0000] hover:bg-[#FF0000]/10 transition-all duration-200"
+              >
+                Subscribe
+                <ArrowUpRight
+                  size={14}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+
+          {/* Topics List */}
+          <div className="bg-background border border-border/20 p-8 md:p-12">
+            <h3 className="font-display text-3xl tracking-tight mb-8">
+              UPCOMING TOPICS
+            </h3>
+            <div className="space-y-0">
+              {[
+                { num: "01", title: "Getting Started with Glass Effects" },
+                { num: "02", title: "Building a Glassmorphism Dashboard" },
+                { num: "03", title: "Custom Themes & Color Schemes" },
+                { num: "04", title: "Animation & Micro-interactions" },
+                { num: "05", title: "Accessibility in Glass Design" },
+              ].map((topic) => (
+                <div
+                  key={topic.num}
+                  className="flex items-center gap-4 py-3 border-b border-border/10 last:border-0 group cursor-default"
+                >
+                  <span className="font-mono text-[10px] text-muted-foreground/30 group-hover:text-primary transition-colors duration-200">
+                    {topic.num}
+                  </span>
+                  <span className="font-mono text-xs text-foreground/80 group-hover:text-foreground transition-colors duration-200">
+                    {topic.title}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

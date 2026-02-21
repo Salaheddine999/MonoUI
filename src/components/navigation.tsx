@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Box, Github } from "lucide-react";
+import { Github, ArrowUpRight } from "lucide-react";
 import { useLocation, Link } from "wouter";
 
 export default function Navigation() {
@@ -11,13 +10,11 @@ export default function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setNavVisible(false);
       } else {
         setNavVisible(true);
       }
-
       setLastScrollY(currentScrollY);
     };
 
@@ -25,51 +22,51 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Ensure each route starts at the top
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [location]);
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-11/12 max-w-4xl transition-transform duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
         navVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="glass rounded-2xl px-6 py-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <Box className="text-white text-sm" size={16} />
-              </div>
-              <span className="text-xl font-bold gradient-text hidden sm:inline">Mono UI</span>
-            </Link>
-          </div>
+      <div className="border-b border-border/30 bg-background/90 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3">
+            <span className="font-display text-2xl tracking-tight">
+              MONO UI
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground hidden sm:inline">
+              v1.0
+            </span>
+          </Link>
 
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              className="text-muted-foreground hover:text-foreground"
+          {/* Nav Links */}
+          <div className="flex items-center gap-6">
+            <a
+              href="https://github.com/Salaheddine999/MonoUI"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200"
               data-testid="button-view-github"
-              asChild
             >
-              <a
-                href="https://github.com/Salaheddine999/MonoUI"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Github size={16} />
-                View on GitHub
-              </a>
-            </Button>
-            <Button
-              className="glass-orange rounded-xl px-4 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/20 transition-all"
+              <Github size={14} />
+              <span className="hidden sm:inline">GitHub</span>
+            </a>
+            <Link
+              href="/components"
+              className="group inline-flex items-center gap-2 border border-foreground/20 px-5 py-2 font-mono text-xs uppercase tracking-widest text-foreground hover:border-primary hover:text-primary transition-all duration-200"
               data-testid="button-get-started"
-              asChild
             >
-              <Link href="/components">Get Started</Link>
-            </Button>
+              Get Started
+              <ArrowUpRight
+                size={14}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </Link>
           </div>
         </div>
       </div>

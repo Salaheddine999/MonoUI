@@ -8,13 +8,10 @@ import Footer from "@/components/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
-      {/* Background Effects */}
-      <div className="fixed inset-0 bg-gradient-to-br from-background via-secondary to-background">
-        <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent"></div>
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
+      {/* Editorial grid background */}
+      <div className="grid-bg fixed inset-0 opacity-20" aria-hidden="true" />
+      <div className="noise-overlay" aria-hidden="true" />
 
       {/* Content */}
       <div className="relative z-10">

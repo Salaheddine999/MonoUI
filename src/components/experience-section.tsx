@@ -1,213 +1,262 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Circle, Play, Sparkles } from "lucide-react";
-import { useState } from "react";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useState, useRef, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
+import { useLocation } from "wouter";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const components = [
+  {
+    title: "Glass Card",
+    medium: "Layout",
+    description:
+      "Frosted translucent panels with multi-layer reflections, noise texture, and depth shadows. Soft and intense variants with optional color tints.",
+    span: "col-span-2 row-span-2",
+  },
+  {
+    title: "Glass Button",
+    medium: "Actions",
+    description:
+      "Frosted call-to-action buttons with inset glow and hover scaling.",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    title: "Glass Input",
+    medium: "Forms",
+    description:
+      "Transparent text fields with blur backdrop and focus ring transitions.",
+    span: "col-span-1 row-span-2",
+  },
+  {
+    title: "Glass Toggle",
+    medium: "Controls",
+    description:
+      "Frosted switch with active glow and smooth thumb animation.",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    title: "Glass Loader",
+    medium: "Feedback",
+    description:
+      "Spinner, dots, pulse, bars — four animated states in frosted containers.",
+    span: "col-span-2 row-span-1",
+  },
+  {
+    title: "And More",
+    medium: "17+ Components",
+    description:
+      "Menus, prompts, messages, social buttons, voice UI, waitlist forms, and more.",
+    span: "col-span-1 row-span-1",
+  },
+];
 
 export default function ExperienceSection() {
-  const { ref, isVisible } = useScrollAnimation();
-  const [activeButton, setActiveButton] = useState(0);
-  const [switchEnabled, setSwitchEnabled] = useState(true);
-  const [selectedTab, setSelectedTab] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [, setLocation] = useLocation();
 
-  const tabs = ["Home", "Profile", "Settings"];
+  useEffect(() => {
+    if (!sectionRef.current || !headerRef.current || !gridRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headerRef.current,
+        { x: -60, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      const cards = gridRef.current?.querySelectorAll("article");
+      if (cards && cards.length > 0) {
+        gsap.set(cards, { y: 60, opacity: 0 });
+        gsap.to(cards, {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="relative py-20 px-4">
-      <div
-        ref={ref}
-        className={`max-w-6xl mx-auto transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            Create Eye-Catching
-            <br />
-            <span className="gradient-text">Experiences With Mono UI</span>
-          </h2>
+    <section
+      ref={sectionRef}
+      id="experience"
+      className="relative py-20 px-6 md:px-12"
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Section header */}
+        <div ref={headerRef} className="mb-16 flex items-end justify-between">
+          <div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+              01 / Components
+            </span>
+            <h2 className="mt-4 font-display text-5xl md:text-7xl tracking-tight">
+              WHAT'S INSIDE
+            </h2>
+          </div>
+          <p className="hidden md:block max-w-xs font-mono text-xs text-muted-foreground text-right leading-relaxed">
+            Glassmorphism components for React. Copy, paste, ship.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Simple Components Card */}
-          <Card
-            className="glass rounded-3xl border-border/20 hover:glass-orange card-hover"
-            data-testid="experience-simple-components"
+        {/* Asymmetric grid */}
+        <div
+          ref={gridRef}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 auto-rows-[160px] md:auto-rows-[180px]"
+        >
+          {components.map((component, index) => (
+            <ComponentCard
+              key={index}
+              component={component}
+              index={index}
+              persistHover={index === 0}
+            />
+          ))}
+        </div>
+
+        {/* Bottom link */}
+        <div className="mt-6 flex justify-end">
+          <button
+            onClick={() => setLocation("/components")}
+            className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
           >
-            <CardContent className="p-8">
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-6">Simple Components</h3>
-
-                {/* Interactive Button Demo */}
-                <div className="space-y-4 mb-6">
-                  <div className="flex gap-3">
-                    <Button
-                      variant={activeButton === 0 ? "default" : "outline"}
-                      className={`rounded-xl px-4 py-2 transition-all ${
-                        activeButton === 0
-                          ? "glass-orange border-0"
-                          : "glass border-border/20 hover:glass-orange"
-                      }`}
-                      onClick={() => setActiveButton(0)}
-                    >
-                      Button
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="glass rounded-xl px-4 py-2 border-border/20 hover:glass-orange transition-all"
-                    >
-                      Button
-                    </Button>
-                  </div>
-
-                  {/* Toggle/Switch Demo */}
-                  <div className="flex items-center justify-between glass rounded-xl p-4">
-                    <span className="text-sm">Enable notifications</span>
-                    <Switch
-                      checked={switchEnabled}
-                      onCheckedChange={setSwitchEnabled}
-                    />
-                  </div>
-
-                  {/* Status Badges */}
-                  <div className="flex gap-2">
-                    <Badge
-                      variant="secondary"
-                      className="glass-orange rounded-full"
-                    >
-                      <Circle className="w-2 h-2 fill-current mr-2" />
-                      Active
-                    </Badge>
-                    <Badge
-                      variant="outline"
-                      className="glass rounded-full border-border/20"
-                    >
-                      <CheckCircle2 className="w-3 h-3 mr-1" />
-                      Complete
-                    </Badge>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Clean Layouts Card */}
-          <Card
-            className="glass rounded-3xl border-border/20 hover:glass-orange card-hover"
-            data-testid="experience-clean-layouts"
-          >
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-6">Clean Layouts</h3>
-
-              {/* Mock Window Interface */}
-              <div className="glass rounded-2xl border-border/20 overflow-hidden">
-                {/* Window Header */}
-                <div className="flex items-center justify-between p-4 border-b border-border/20">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    monoui.app
-                  </div>
-                </div>
-
-                {/* Window Content */}
-                <div className="p-6 space-y-4">
-                  {/* Navigation Tabs */}
-                  <div className="flex space-x-1 glass rounded-xl p-1">
-                    {tabs.map((tab, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setSelectedTab(index)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                          selectedTab === index
-                            ? "glass-orange"
-                            : "text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        {tab}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Content Lines */}
-                  <div className="space-y-2">
-                    <div className="h-3 glass rounded w-3/4"></div>
-                    <div className="h-3 glass rounded w-1/2"></div>
-                    <div className="h-3 glass rounded w-2/3"></div>
-                  </div>
-
-                  {/* Action Button */}
-                  <Button className="glass-orange rounded-xl px-4 py-2 text-sm w-full">
-                    Get Started
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Smooth Animations Card */}
-          <Card
-            className="glass rounded-3xl border-border/20 hover:glass-orange card-hover"
-            data-testid="experience-smooth-animations"
-          >
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-6">Smooth Animations</h3>
-
-              <div className="space-y-6">
-                {/* Floating Elements */}
-                <div className="relative h-32 glass rounded-2xl p-4 overflow-hidden">
-                  <div className="absolute top-4 left-4">
-                    <div className="w-6 h-6 bg-gradient-to-br from-primary to-accent rounded-lg animate-float flex items-center justify-center">
-                      <Sparkles className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                  <div className="absolute top-8 right-6">
-                    <div
-                      className="w-4 h-4 bg-gradient-to-br from-accent to-primary rounded-full animate-float"
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                  </div>
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-                    <div
-                      className="w-5 h-5 bg-gradient-to-br from-primary/50 to-accent/50 rounded-lg animate-float"
-                      style={{ animationDelay: "2s" }}
-                    ></div>
-                  </div>
-
-                  {/* Animated Progress */}
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="h-2 glass rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"
-                        style={{ width: "70%" }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Animated Cards */}
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="glass rounded-xl p-3 hover:scale-105 transition-transform cursor-pointer">
-                    <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg mb-2 animate-glow"></div>
-                    <div className="h-2 glass rounded w-3/4 mb-1"></div>
-                    <div className="h-2 glass rounded w-1/2"></div>
-                  </div>
-                  <div className="glass rounded-xl p-3 hover:scale-105 transition-transform cursor-pointer">
-                    <div className="w-8 h-8 bg-gradient-to-br from-accent to-primary rounded-lg mb-2 animate-glow"></div>
-                    <div className="h-2 glass rounded w-2/3 mb-1"></div>
-                    <div className="h-2 glass rounded w-3/4"></div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+            Browse all
+            <ArrowUpRight
+              size={14}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </button>
         </div>
       </div>
     </section>
+  );
+}
+
+function ComponentCard({
+  component,
+  index,
+  persistHover = false,
+}: {
+  component: {
+    title: string;
+    medium: string;
+    description: string;
+    span: string;
+  };
+  index: number;
+  persistHover?: boolean;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLElement>(null);
+  const [isScrollActive, setIsScrollActive] = useState(false);
+
+  useEffect(() => {
+    if (!persistHover || !cardRef.current) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: cardRef.current,
+        start: "top 80%",
+        onEnter: () => setIsScrollActive(true),
+      });
+    }, cardRef);
+
+    return () => ctx.revert();
+  }, [persistHover]);
+
+  const isActive = isHovered || isScrollActive;
+
+  return (
+    <article
+      ref={cardRef}
+      className={cn(
+        "group relative border border-border/40 p-5 flex flex-col justify-between transition-all duration-500 cursor-pointer overflow-hidden",
+        component.span,
+        isActive && "border-primary/60"
+      )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Background layer */}
+      <div
+        className={cn(
+          "absolute inset-0 transition-opacity duration-500",
+          isActive ? "opacity-100" : "opacity-0"
+        )}
+        style={{ backgroundColor: "hsl(15 100% 60% / 0.15)" }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10">
+        <span className={cn("font-mono text-[10px] uppercase tracking-widest transition-colors duration-300", "text-muted-foreground")}>
+          {component.medium}
+        </span>
+        <h3
+          className={cn(
+            "mt-3 font-display text-2xl md:text-4xl tracking-tight transition-colors duration-300",
+            isActive ? "text-primary" : "text-foreground"
+          )}
+        >
+          {component.title}
+        </h3>
+      </div>
+
+      {/* Description — reveals on hover */}
+      <div className="relative z-10">
+        <p
+          className={cn(
+            "font-mono text-xs leading-relaxed transition-all duration-500 max-w-[280px]",
+            isActive
+              ? "opacity-100 translate-y-0 text-muted-foreground"
+              : "opacity-0 translate-y-2"
+          )}
+        >
+          {component.description}
+        </p>
+      </div>
+
+      {/* Index marker */}
+      <span
+        className={cn(
+          "absolute bottom-4 right-4 font-mono text-[10px] transition-colors duration-300",
+          isActive ? "text-primary" : "text-muted-foreground/30"
+        )}
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      {/* Corner accent */}
+      <div
+        className={cn(
+          "absolute top-0 right-0 w-12 h-12 transition-all duration-500",
+          isActive ? "opacity-100" : "opacity-0"
+        )}
+      >
+        <div className="absolute top-0 right-0 w-full h-px bg-primary" />
+        <div className="absolute top-0 right-0 w-px h-full bg-primary" />
+      </div>
+    </article>
   );
 }
