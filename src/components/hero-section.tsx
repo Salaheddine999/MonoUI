@@ -10,8 +10,8 @@ import {
   SiReact,
   SiTypescript,
   SiTailwindcss,
-  SiFramer,
 } from "react-icons/si";
+import { TbBrandFramerMotion } from "react-icons/tb";
 import {
   SplitFlapText,
   SplitFlapMuteToggle,
@@ -51,7 +51,7 @@ export default function HeroSection() {
     { icon: SiReact, name: "React" },
     { icon: SiTypescript, name: "TypeScript" },
     { icon: SiTailwindcss, name: "Tailwind" },
-    { icon: SiFramer, name: "Framer Motion" },
+    { icon: TbBrandFramerMotion, name: "Framer Motion" },
   ];
 
   const features = [
